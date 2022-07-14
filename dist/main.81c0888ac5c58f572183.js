@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar [class^='options'] li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar [class^='options'] li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;IACI,kCAAkC;IAClC,oCAAoC;IACpC,qCAAqC;IACrC,wBAAwB;IACxB,sCAAsC;IACtC,mCAAmC;IACnC,mJAAmJ;IACnJ;;;;;;;;;;;mBAWe;;AAEnB;;AAEA;IACI,yCAAyC;IACzC,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,sCAAsC;IACtC,iBAAiB;AACrB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,YAAY;AAChB;;;AAGA;IACI,eAAe;IACf,uCAAuC;AAC3C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,YAAY;AAChB;;AAEA;IACI,2CAA2C;AAC/C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,sCAAsC;AAC1C","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\r\n\r\n:root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar [class^='options'] li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar [class^='options'] li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;IACI,kCAAkC;IAClC,oCAAoC;IACpC,qCAAqC;IACrC,wBAAwB;IACxB,sCAAsC;IACtC,mCAAmC;IACnC,mJAAmJ;IACnJ;;;;;;;;;;;mBAWe;;AAEnB;;AAEA;IACI,yCAAyC;IACzC,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,sCAAsC;IACtC,iBAAiB;AACrB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,YAAY;AAChB;;;AAGA;IACI,eAAe;IACf,uCAAuC;AAC3C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,YAAY;AAChB;;AAEA;IACI,2CAA2C;AAC/C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\r\n\r\n:root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -576,13 +576,12 @@ const Project = (name) =>{
     let dateProto = (0,_Date_item__WEBPACK_IMPORTED_MODULE_1__["default"])();
     let todoItems = [];
     const getName = () => name;
-    const getDate = () => date;
     const getTodoItems = () => todoItems;
     const setName = (string) => name = string;
     const addItem = (todoItem) => todoItems.push(todoItem);
     const removeItem = (timeInMs) => todoItems.find(item => item.getDate().getTime() === timeInMs);
     return Object.assign({}, dateProto,
-        {getName, getDate, getTodoItems, setName, addItem, removeItem}); 
+        {getName, getTodoItems, setName, addItem, removeItem}); 
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Project);
@@ -601,66 +600,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ "./src/Project.js");
+/* harmony import */ var _todo_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo-item */ "./src/todo-item.js");
+/* harmony import */ var _pubsub__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pubsub */ "./src/pubsub.js");
+
+
+
+
 const DisplayController = () => {
     //cache
-    const projectsUl = document.querySelector('.options-2');
-    const myProjectsText = document.querySelector('.my-projects');
-    const newProject = document.querySelector('.new-project');
-    const projectForm = document.querySelector('.project-form');
-    const content = document.querySelector('.content');
-    const btnSubmitProject = document.querySelector('.submit-project');
-    const btnCancelProject = document.querySelector('.cancel-project');
+    const myProjectsText = document.querySelector('.my-projects-txt');
+    const listMyProjects = document.querySelector('.my-projects');
+    const newProjectText = document.querySelector('.new-project-txt');
+    const formNewProject = document.querySelector('.project-form');
+    const btnCancelNewProject = document.querySelector('.cancel-project');
+    
+    const listProjectTodos = document.querySelector('.project-todos');
+    const formNewTodo = document.querySelector('.todo-form');
+    const newTodo = document.querySelector('.new-todo');
+    const newTodoText = document.querySelector('.new-todo-txt');
+    const btnCancelNewTodo = document.querySelector('.cancel-todo');
+    const content = document.querySelector(".content");
 
     //cache inputs
-    const projectInput = document.querySelector('#new-project');
+    const inputNewProject = document.querySelector('#new-project');
+    const inputNewTodo = document.querySelector('#new-todo');
 
-    const submitForm = (e) => {
+    const submitNewProject = (e) => {
         e.preventDefault();
-        console.log(projectInput.value);
+        console.log(inputNewProject.value);
+        let p1 = (0,_Project__WEBPACK_IMPORTED_MODULE_0__["default"])(inputNewProject.value);
+        _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('addProject', p1);
+        closeForm();
+        formNewProject.reset();
+    };
+    
+    const submitNewTodo = (e) => {
+        e.preventDefault();
+        console.log(inputNewTodo.value);
+        let t1 = (0,_todo_item__WEBPACK_IMPORTED_MODULE_1__["default"])(inputNewTodo.value)
+        _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('addTodo', t1);
+        closeNewTodoForm();
+        formNewTodo.reset();
+        //TODO -- how do i know which project is being selected ???
+        // maybe event emit will help handle
     };
     
     const openForm = () => {
-        projectForm.style.display = 'inline-block';
+        formNewProject.style.display = 'inline-block';
         console.log('form open');
     };
 
     const closeForm = () => {
-        projectForm.style.display = 'none';
+        formNewProject.style.display = 'none';
         console.log('form close');
+    };
+    const openNewTodoForm = () => {
+        formNewTodo.style.display = 'inline-block';
+        console.log('newTodo form open');
+    };
+
+    const closeNewTodoForm = () => {
+        formNewTodo.style.display = 'none';
+        console.log('newTodo form close');
     };
 
     const renderProjectsBar  = (projectsArray) => {
-        projectsUl.innerHTML = '';
+        console.log('render Projects Bar')
+        listMyProjects.innerHTML = '';
         
-        projectsUl.appendChild(myProjectsText);
-        projectsArray.forEach(element => {
+        listMyProjects.appendChild(myProjectsText);
+        projectsArray.forEach(project => {
+            const id = project.getDate().getTime();
             const li = document.createElement('li');
-            li.textContent = element.getName();
-            projectsUl.appendChild(li);       
+            const closeButton =document.createElement('span');
+            closeButton.innerHTML = '&times';
+            closeButton.classList.add('close-button');
+            li.textContent = project.getName();
+            li.classList.add('project');
+            li.setAttribute('data-key', id);
+            li.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('selectProject', project));
+            closeButton.addEventListener( 'click', e => {
+                e.stopPropagation();    //stops the li click event, and only fires this close btn event
+                _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('removeProject', id);   
+            });
+            li.appendChild(closeButton);
+            listMyProjects.appendChild(li);
         });
     };
 
     const renderProjectTodos = (project) => {
+        console.log(`---render projectTodos for ${project.getName()}`);
         content.innerHTML = '';
+        listProjectTodos.innerHTML = '';
         project.getTodoItems().forEach( item => {
             const itemDiv = document.createElement('div');
             itemDiv.textContent = item.getName();
             itemDiv.classList.add('todo-item');
-            content.appendChild(itemDiv);
+            listProjectTodos.appendChild(itemDiv);
         });
+        content.appendChild(listProjectTodos);
+        content.appendChild(newTodo);
+    };
+
+    const renderNoSelection = () => {
+        content.innerHTML = 'No Selection';
     };
 
      //bind
-     newProject.addEventListener('click', openForm);
-     projectForm.addEventListener('submit', submitForm);
-     btnCancelProject.addEventListener('click', closeForm);
+     newProjectText.addEventListener('click', openForm);
+     formNewProject.addEventListener('submit', submitNewProject);
+     btnCancelNewProject.addEventListener('click', closeForm);
+     formNewTodo.addEventListener('submit', submitNewTodo);
      
+    newTodoText.addEventListener('click', openNewTodoForm);
+    btnCancelNewTodo.addEventListener('click', closeNewTodoForm)
 
-
-    return {renderProjectsBar, renderProjectTodos};
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection};
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DisplayController);
+
+/***/ }),
+
+/***/ "./src/pubsub.js":
+/*!***********************!*\
+  !*** ./src/pubsub.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//events - a super-basic Javascript (publish subscribe) pattern
+
+const events = {
+    events: {},
+    on: function (eventName, fn) {
+      this.events[eventName] = this.events[eventName] || [];
+      this.events[eventName].push(fn);
+    },
+    off: function(eventName, fn) {
+      if (this.events[eventName]) {
+        for (var i = 0; i < this.events[eventName].length; i++) {
+          if (this.events[eventName][i] === fn) {
+            this.events[eventName].splice(i, 1);
+            break;
+          }
+        };
+      }
+    },
+    emit: function (eventName, data) {
+      if (this.events[eventName]) {
+        this.events[eventName].forEach(function(fn) {
+          fn(data);
+        });
+      }
+    }
+  };
+
+  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (events);
 
 /***/ }),
 
@@ -778,6 +878,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _todo_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo-item */ "./src/todo-item.js");
 /* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Project */ "./src/Project.js");
 /* harmony import */ var _display_controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./display-controller */ "./src/display-controller.js");
+/* harmony import */ var _pubsub__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pubsub */ "./src/pubsub.js");
+
 
 
 
@@ -788,23 +890,58 @@ __webpack_require__.r(__webpack_exports__);
 // either way, dont know if I should set the ID here, or inside Projects' prototype
 // Same problem will happen with our old Library project
 let allProjects = [];
-window.TodoItem = _todo_item__WEBPACK_IMPORTED_MODULE_1__["default"];
-window.Project = _Project__WEBPACK_IMPORTED_MODULE_2__["default"];
-window.displayController = _display_controller__WEBPACK_IMPORTED_MODULE_3__["default"];
+let selectedProject;
+let d1 = (0,_display_controller__WEBPACK_IMPORTED_MODULE_3__["default"])();
 
-let d1 = displayController();
+const addProject = (project) => {
+    allProjects.push(project)
+    d1.renderProjectsBar(allProjects);
+    console.log(`added ${project.getName()} in index`);
+    if (allProjects.length == 1){
+        selectProject(project);
+    };
+    //sortBy(sortInput.value);
+    //bookId++;
+};
 
-/*
-let d1 = displayController();
-let p1 = Project('First P');
-p1.addItem(TodoItem('first Todo'));
-d1.renderProjectsBar([p1]);
-d1.renderProjectTodos(p1);
-*/
-// p1.addItem(TodoItem('second Todo'));
-// p1.addItem(TodoItem('third Todo'));
+const removeProject = (id) => {
+    let index = allProjects.findIndex(project => project.getDate().getTime() === id);
+    allProjects.splice(index, 1)
+    d1.renderProjectsBar(allProjects);
+    console.log(`removed project index ${id}`);
+    if (index == selectedProject.getDate().getTime() || allProjects.length == 0){
+        d1.renderNoSelection();
+    }
+};
+
+const addTodoToSelected = (todoItem) =>{
+    selectedProject.addItem(todoItem);
+    d1.renderProjectTodos(selectedProject);
+    console.log(`added ${todoItem.getName()} to ${selectedProject.getName()}`);
+};
+
+const selectProject = (project) => {
+    selectedProject = project;
+    d1.renderProjectTodos(project);
+};
+
+//events
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('addProject', addProject);
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('removeProject', removeProject);
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('addTodo', addTodoToSelected); 
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectProject', selectProject);
+
+
+// !!!!!!! TODO 
+// we dont know which project to add the new todo to
+// from just the display Controllers' new Todo submit
+//maybe have a global projectSelected here ?
+//TODO prob take out the rendering TodoList inside displayController after selecting a project,
+// and instead call it from out here. not sure
+
+//all this kinda half done now ^^^^
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.04345f2899692d7c9086.js.map
+//# sourceMappingURL=main.81c0888ac5c58f572183.js.map

@@ -19,15 +19,15 @@
             <li class="this-week">This Week</li>
         </ul>
 
-        <ul class="options-2">
-            <li class="my-projects">My Projects</li>
+        <ul class="my-projects">
+            <li class="my-projects-txt">My Projects</li>
         </ul>
 
-        <ul class="options-3">
-            <li class="new-project">Create New Project</li>
+        <ul class="new-project">
+            <li class="new-project-txt">Create New Project</li>
             <form action="" class="project-form">
                 <label for="new-project"></label>
-                <input type="text" name="new-project" id="new-project">
+                <input type="text" name="new-project" id="new-project" required>
                 <div class="new-project-buttons">
                     <button class="submit-project">Submit</button>
                     <button class="cancel-project" type="button">Cancel</button>
@@ -40,7 +40,20 @@
             Filter
         </div>
         <div class="content">
-            
+            <ul class="project-todos">
+                
+            </ul>
+            <ul class="new-todo">
+                <li class="new-todo-txt">Create New Todo</li>
+                <form action="" class="todo-form">
+                <label for="new-todo"></label>
+                <input type="text" name="new-todo" id="new-todo" required>
+                <div class="new-todo-buttons">
+                    <button class="submit-todo">Submit</button>
+                    <button class="cancel-todo" type="button">Cancel</button>
+                </div>
+                </form>
+            </ul>
         </div>
     </div>
 </body>

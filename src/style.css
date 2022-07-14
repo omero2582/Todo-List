@@ -47,18 +47,18 @@ li {
 }
 
 
-.side-bar [class^='options'] li:hover{
+.side-bar ul li:hover{
     cursor: pointer;
     background-color: var(--side-bar-hover);
 }
 
-.side-bar [class^='options'] li{
+.side-bar ul li{
     padding: 10px 0px;
     padding-left:40px;
     font-size: 1.10rem;
 }
 
-.side-bar .new-project{
+.side-bar .new-project-txt{
     padding-bottom: 5px;
 }
 
@@ -94,4 +94,22 @@ li {
 
 .main .options {
     background-color: var(--options-color);
+}
+
+.side-bar ul .project{
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.close-button{
+    margin-right: 7px;
+    padding: 0px 8px;
+    font-size: 1.6rem;
+}
+
+.new-todo .todo-form{
+    display: none;
 }
