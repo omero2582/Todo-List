@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-<script defer src="main.81c0888ac5c58f572183.js"></script></head>
+<script defer src="main.f3db32868bf690bfabf1.js"></script></head>
 <body>
     <div class="header">
         <ul class="nav-bar">
@@ -37,23 +37,50 @@
     </div>
     <div class="main">
         <div class="options">
-            Filter
+            Sort By:
+            <select name="sort" id="sort">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Downcoming">Downcoming</option>
+            </select>
         </div>
-        <div class="content">
+        <div class="content">  
             <ul class="project-todos">
-                
+
             </ul>
-            <ul class="new-todo">
+            <ul class="project-todo-options">
                 <li class="new-todo-txt">Create New Todo</li>
-                <form action="" class="todo-form">
-                <label for="new-todo"></label>
-                <input type="text" name="new-todo" id="new-todo" required>
-                <div class="new-todo-buttons">
-                    <button class="submit-todo">Submit</button>
-                    <button class="cancel-todo" type="button">Cancel</button>
-                </div>
-                </form>
             </ul>
+        </div>
+    </div>
+
+
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-modal">&times;</span>
+                <h2>Todo Item</h2>   
+            </div>
+            <div class="modal-body">
+                <form class='todo-form' action="">
+                    <p>
+                        <label for="todo-name">Name:</label>
+                        <input name="todo-name" id="todo-name" type="text" required>
+                    </p>
+                    <p>
+                        <label for="todo-description">Description</label>
+                        <input type="text" name="todo-description" id="todo-description">
+                    </p>
+                    <p>
+                        <label for="todo-priority">Priority #</label>
+                        <input type="number" name="todo-priority" id="todo-priority">
+                    </p>
+                    <p>
+                        <label for="todo-due-date">Due Date</label>
+                        <input type="date" name="todo-due-date" id="todo-due-date" >
+                    </p>
+                    <button type="submit" class="submit-todo2">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

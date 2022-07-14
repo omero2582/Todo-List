@@ -4,60 +4,73 @@ import events from "./pubsub";
 
 const DisplayController = () => {
     //cache
-    const myProjectsText = document.querySelector('.my-projects-txt');
+    //sidebar
+    const myProjectsText = document.querySelector('.my-projects-txt');//remove this 1, place it outside the UL instead 
+                                                                    //and wrap the whole thing in a div.
+                                                                    // JK we need this cache anyways for when we click on this ->  show projects in .content
     const listMyProjects = document.querySelector('.my-projects');
     const newProjectText = document.querySelector('.new-project-txt');
     const formNewProject = document.querySelector('.project-form');
     const btnCancelNewProject = document.querySelector('.cancel-project');
+    //newProject
+    const newProjectName = document.querySelector('#new-project');
     
-    const listProjectTodos = document.querySelector('.project-todos');
-    const formNewTodo = document.querySelector('.todo-form');
-    const newTodo = document.querySelector('.new-todo');
-    const newTodoText = document.querySelector('.new-todo-txt');
-    const btnCancelNewTodo = document.querySelector('.cancel-todo');
+    //content
     const content = document.querySelector(".content");
+    const listProjectTodos = document.querySelector('.project-todos');
+    const projectTodoOptions = document.querySelector('.project-todo-options');
+    const newTodoText = document.querySelector('.new-todo-txt');
 
-    //cache inputs
-    const inputNewProject = document.querySelector('#new-project');
-    const inputNewTodo = document.querySelector('#new-todo');
+    //modal newTodo
+    const modal = document.querySelector('.modal');
+    const formNewTodo = document.querySelector('.todo-form');
+    const btnCloseModal = document.querySelector('.close-modal');
+    //newTodo inputs
+    const newTodoName = document.querySelector('#todo-name');
+    const newTodoDescription = document.querySelector('#todo-description');
+    const newTodoPriority = document.querySelector('#todo-priority');
+    const newTodoDueDate = document.querySelector('#todo-due-date');
+
+    const checkTarget = (e) => {
+        if (e.target === modal){
+            closeNewTodoModal(e);
+        }
+    }
 
     const submitNewProject = (e) => {
         e.preventDefault();
-        console.log(inputNewProject.value);
-        let p1 = Project(inputNewProject.value);
+        let p1 = Project(newProjectName.value);
         events.emit('addProject', p1);
-        closeForm();
+        closeNewProjectForm();
         formNewProject.reset();
     };
     
     const submitNewTodo = (e) => {
         e.preventDefault();
-        console.log(inputNewTodo.value);
-        let t1 = TodoItem(inputNewTodo.value)
+        let t1 = TodoItem(newTodoName.value);
+        t1.setDescription(newTodoDescription.value);
+        t1.setPriority(newTodoPriority.value);
+        t1.setDueDate(newTodoDueDate.value);
         events.emit('addTodo', t1);
-        closeNewTodoForm();
+        closeNewTodoModal();
         formNewTodo.reset();
-        //TODO -- how do i know which project is being selected ???
-        // maybe event emit will help handle
     };
     
-    const openForm = () => {
+    const openNewProjectForm = () => {
         formNewProject.style.display = 'inline-block';
-        console.log('form open');
+        newProjectName.focus();
     };
 
-    const closeForm = () => {
+    const closeNewProjectForm = () => {
         formNewProject.style.display = 'none';
-        console.log('form close');
     };
-    const openNewTodoForm = () => {
-        formNewTodo.style.display = 'inline-block';
-        console.log('newTodo form open');
+    const openNewTodoModal = () => {
+        modal.style.display = 'initial';
+        newTodoName.focus();
     };
 
-    const closeNewTodoForm = () => {
-        formNewTodo.style.display = 'none';
-        console.log('newTodo form close');
+    const closeNewTodoModal = () => {
+        modal.style.display = 'none';
     };
 
     const renderProjectsBar  = (projectsArray) => {
@@ -95,7 +108,9 @@ const DisplayController = () => {
             listProjectTodos.appendChild(itemDiv);
         });
         content.appendChild(listProjectTodos);
-        content.appendChild(newTodo);
+        content.appendChild(projectTodoOptions);
+        closeNewTodoModal();
+        formNewTodo.reset();
     };
 
     const renderNoSelection = () => {
@@ -103,15 +118,25 @@ const DisplayController = () => {
     };
 
      //bind
-     newProjectText.addEventListener('click', openForm);
+     newProjectText.addEventListener('click', openNewProjectForm);
      formNewProject.addEventListener('submit', submitNewProject);
-     btnCancelNewProject.addEventListener('click', closeForm);
+     btnCancelNewProject.addEventListener('click', closeNewProjectForm);
      formNewTodo.addEventListener('submit', submitNewTodo);
      
-    newTodoText.addEventListener('click', openNewTodoForm);
-    btnCancelNewTodo.addEventListener('click', closeNewTodoForm)
+     newTodoText.addEventListener('click', openNewTodoModal);
+
+     //modal
+     window.addEventListener('click', checkTarget);
+     btnCloseModal.addEventListener('click', closeNewTodoModal);
 
     return {renderProjectsBar, renderProjectTodos, renderNoSelection};
 };
 
 export default DisplayController;
+
+//TODO
+//let clone = template.content.cloneNode(true);
+// ^^ with ES6 template
+// maybe not actually... works fine now, just have to conclude whether or not it is good practice to 
+// cache the new projects UL, and then set the .content and the UL's innerHtml to empty
+// then append back in the UL

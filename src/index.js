@@ -15,7 +15,6 @@ let d1 = DisplayController();
 const addProject = (project) => {
     allProjects.push(project)
     d1.renderProjectsBar(allProjects);
-    console.log(`added ${project.getName()} in index`);
     if (allProjects.length == 1){
         selectProject(project);
     };
@@ -34,9 +33,9 @@ const removeProject = (id) => {
 };
 
 const addTodoToSelected = (todoItem) =>{
+    console.log(`added ${todoItem.getName()} to ${selectedProject.getName()}`);
     selectedProject.addItem(todoItem);
     d1.renderProjectTodos(selectedProject);
-    console.log(`added ${todoItem.getName()} to ${selectedProject.getName()}`);
 };
 
 const selectProject = (project) => {
@@ -50,6 +49,7 @@ events.on('removeProject', removeProject);
 events.on('addTodo', addTodoToSelected); 
 events.on('selectProject', selectProject);
 
+d1.renderNoSelection();
 
 // !!!!!!! TODO 
 // we dont know which project to add the new todo to

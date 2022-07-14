@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;IACI,kCAAkC;IAClC,oCAAoC;IACpC,qCAAqC;IACrC,wBAAwB;IACxB,sCAAsC;IACtC,mCAAmC;IACnC,mJAAmJ;IACnJ;;;;;;;;;;;mBAWe;;AAEnB;;AAEA;IACI,yCAAyC;IACzC,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,sCAAsC;IACtC,iBAAiB;AACrB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,YAAY;AAChB;;;AAGA;IACI,eAAe;IACf,uCAAuC;AAC3C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,YAAY;AAChB;;AAEA;IACI,2CAA2C;AAC/C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\r\n\r\n:root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n    --close-btn-color: hsl(0, 0%, 0%);\r\n    --close-btn-hover: hsl(0, 0%, 22%);\r\n    /* box-sizing: border-box; */\r\n\r\n    --modal-txt-color: white;\r\n    --modal-background-color: rgb(0, 0, 0, 0.4);\r\n    --modal-content-color: teal;\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}\r\n\r\n/*MODAL ------------*/\r\n\r\n.modal{\r\n    background-color: var(--modal-background-color);\r\n    color: var(--modal-txt-color);\r\n \r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    padding-top: 100px;     /*moves modal content down*/\r\n    display: none;\r\n    z-index: 1;\r\n}\r\n\r\n.modal-content{\r\n    background-color:var(--modal-content-color);\r\n    width: 300px;\r\n    position: relative;\r\n    margin: auto;\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.modal-content h2{\r\n    font-weight: 500;\r\n    /* margin-bottom: 10px; */\r\n    margin: 0;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.modal-content .modal-header{\r\n    padding: 23px 16px 12px;\r\n    /* padding: 2px 16px; */\r\n}\r\n\r\n.modal-header .close-modal{\r\n    background-color: var(--close-btn-color);\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 2px;\r\n    right: 16px;\r\n    display: flex;      /*center X*/\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.modal-header .close-modal:hover{\r\n    cursor: pointer;\r\n    background-color: var(--close-btn-hover);\r\n}\r\n\r\n.modal-body form{\r\n    padding: 0 20px;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.modal-body label{\r\n    font-size: 1.2rem;\r\n}\r\n\r\n.modal form p{\r\n    display: grid;\r\n    /* margin: 16px 0px;   default */\r\n    margin: 16px 0px;\r\n}\r\n\r\n.modal input{\r\n    font-size: 1.25rem;\r\n    width: 90%;\r\n}\r\n\r\n.modal button[type=\"submit\"]{\r\n    font-size: 1.25rem;\r\n    width: 35%;\r\n    justify-self: center;\r\n    /* padding: 1px 6px;  default*/\r\n    padding: 4px 6px;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;IACI,kCAAkC;IAClC,oCAAoC;IACpC,qCAAqC;IACrC,wBAAwB;IACxB,sCAAsC;IACtC,mCAAmC;IACnC,mJAAmJ;IACnJ;;;;;;;;;;;mBAWe;;IAEf,iCAAiC;IACjC,kCAAkC;IAClC,4BAA4B;;IAE5B,wBAAwB;IACxB,2CAA2C;IAC3C,2BAA2B;AAC/B;;AAEA;IACI,yCAAyC;IACzC,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,sCAAsC;IACtC,iBAAiB;AACrB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,YAAY;AAChB;;;AAGA;IACI,eAAe;IACf,uCAAuC;AAC3C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,YAAY;AAChB;;AAEA;IACI,2CAA2C;AAC/C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA,qBAAqB;;AAErB;IACI,+CAA+C;IAC/C,6BAA6B;;IAE7B,eAAe;IACf,WAAW;IACX,YAAY;IACZ,MAAM;IACN,OAAO;IACP,kBAAkB,MAAM,2BAA2B;IACnD,aAAa;IACb,UAAU;AACd;;AAEA;IACI,2CAA2C;IAC3C,YAAY;IACZ,kBAAkB;IAClB,YAAY;IACZ,oBAAoB;AACxB;;AAEA;IACI,gBAAgB;IAChB,yBAAyB;IACzB,SAAS;IACT,iBAAiB;AACrB;;AAEA;IACI,uBAAuB;IACvB,uBAAuB;AAC3B;;AAEA;IACI,wCAAwC;IACxC,YAAY;IACZ,WAAW;IACX,kBAAkB;IAClB,kBAAkB;IAClB,QAAQ;IACR,WAAW;IACX,aAAa,OAAO,WAAW;IAC/B,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,wCAAwC;AAC5C;;AAEA;IACI,eAAe;IACf,aAAa;IACb,0BAA0B;AAC9B;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,gCAAgC;IAChC,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;IAClB,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,oBAAoB;IACpB,8BAA8B;IAC9B,gBAAgB;AACpB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\r\n\r\n:root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n    --close-btn-color: hsl(0, 0%, 0%);\r\n    --close-btn-hover: hsl(0, 0%, 22%);\r\n    /* box-sizing: border-box; */\r\n\r\n    --modal-txt-color: white;\r\n    --modal-background-color: rgb(0, 0, 0, 0.4);\r\n    --modal-content-color: teal;\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}\r\n\r\n/*MODAL ------------*/\r\n\r\n.modal{\r\n    background-color: var(--modal-background-color);\r\n    color: var(--modal-txt-color);\r\n \r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    padding-top: 100px;     /*moves modal content down*/\r\n    display: none;\r\n    z-index: 1;\r\n}\r\n\r\n.modal-content{\r\n    background-color:var(--modal-content-color);\r\n    width: 300px;\r\n    position: relative;\r\n    margin: auto;\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.modal-content h2{\r\n    font-weight: 500;\r\n    /* margin-bottom: 10px; */\r\n    margin: 0;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.modal-content .modal-header{\r\n    padding: 23px 16px 12px;\r\n    /* padding: 2px 16px; */\r\n}\r\n\r\n.modal-header .close-modal{\r\n    background-color: var(--close-btn-color);\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 2px;\r\n    right: 16px;\r\n    display: flex;      /*center X*/\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.modal-header .close-modal:hover{\r\n    cursor: pointer;\r\n    background-color: var(--close-btn-hover);\r\n}\r\n\r\n.modal-body form{\r\n    padding: 0 20px;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.modal-body label{\r\n    font-size: 1.2rem;\r\n}\r\n\r\n.modal form p{\r\n    display: grid;\r\n    /* margin: 16px 0px;   default */\r\n    margin: 16px 0px;\r\n}\r\n\r\n.modal input{\r\n    font-size: 1.25rem;\r\n    width: 90%;\r\n}\r\n\r\n.modal button[type=\"submit\"]{\r\n    font-size: 1.25rem;\r\n    width: 35%;\r\n    justify-self: center;\r\n    /* padding: 1px 6px;  default*/\r\n    padding: 4px 6px;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -609,60 +609,73 @@ __webpack_require__.r(__webpack_exports__);
 
 const DisplayController = () => {
     //cache
-    const myProjectsText = document.querySelector('.my-projects-txt');
+    //sidebar
+    const myProjectsText = document.querySelector('.my-projects-txt');//remove this 1, place it outside the UL instead 
+                                                                    //and wrap the whole thing in a div.
+                                                                    // JK we need this cache anyways for when we click on this ->  show projects in .content
     const listMyProjects = document.querySelector('.my-projects');
     const newProjectText = document.querySelector('.new-project-txt');
     const formNewProject = document.querySelector('.project-form');
     const btnCancelNewProject = document.querySelector('.cancel-project');
+    //newProject
+    const newProjectName = document.querySelector('#new-project');
     
-    const listProjectTodos = document.querySelector('.project-todos');
-    const formNewTodo = document.querySelector('.todo-form');
-    const newTodo = document.querySelector('.new-todo');
-    const newTodoText = document.querySelector('.new-todo-txt');
-    const btnCancelNewTodo = document.querySelector('.cancel-todo');
+    //content
     const content = document.querySelector(".content");
+    const listProjectTodos = document.querySelector('.project-todos');
+    const projectTodoOptions = document.querySelector('.project-todo-options');
+    const newTodoText = document.querySelector('.new-todo-txt');
 
-    //cache inputs
-    const inputNewProject = document.querySelector('#new-project');
-    const inputNewTodo = document.querySelector('#new-todo');
+    //modal newTodo
+    const modal = document.querySelector('.modal');
+    const formNewTodo = document.querySelector('.todo-form');
+    const btnCloseModal = document.querySelector('.close-modal');
+    //newTodo inputs
+    const newTodoName = document.querySelector('#todo-name');
+    const newTodoDescription = document.querySelector('#todo-description');
+    const newTodoPriority = document.querySelector('#todo-priority');
+    const newTodoDueDate = document.querySelector('#todo-due-date');
+
+    const checkTarget = (e) => {
+        if (e.target === modal){
+            closeNewTodoModal(e);
+        }
+    }
 
     const submitNewProject = (e) => {
         e.preventDefault();
-        console.log(inputNewProject.value);
-        let p1 = (0,_Project__WEBPACK_IMPORTED_MODULE_0__["default"])(inputNewProject.value);
+        let p1 = (0,_Project__WEBPACK_IMPORTED_MODULE_0__["default"])(newProjectName.value);
         _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('addProject', p1);
-        closeForm();
+        closeNewProjectForm();
         formNewProject.reset();
     };
     
     const submitNewTodo = (e) => {
         e.preventDefault();
-        console.log(inputNewTodo.value);
-        let t1 = (0,_todo_item__WEBPACK_IMPORTED_MODULE_1__["default"])(inputNewTodo.value)
+        let t1 = (0,_todo_item__WEBPACK_IMPORTED_MODULE_1__["default"])(newTodoName.value);
+        t1.setDescription(newTodoDescription.value);
+        t1.setPriority(newTodoPriority.value);
+        t1.setDueDate(newTodoDueDate.value);
         _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('addTodo', t1);
-        closeNewTodoForm();
+        closeNewTodoModal();
         formNewTodo.reset();
-        //TODO -- how do i know which project is being selected ???
-        // maybe event emit will help handle
     };
     
-    const openForm = () => {
+    const openNewProjectForm = () => {
         formNewProject.style.display = 'inline-block';
-        console.log('form open');
+        newProjectName.focus();
     };
 
-    const closeForm = () => {
+    const closeNewProjectForm = () => {
         formNewProject.style.display = 'none';
-        console.log('form close');
     };
-    const openNewTodoForm = () => {
-        formNewTodo.style.display = 'inline-block';
-        console.log('newTodo form open');
+    const openNewTodoModal = () => {
+        modal.style.display = 'initial';
+        newTodoName.focus();
     };
 
-    const closeNewTodoForm = () => {
-        formNewTodo.style.display = 'none';
-        console.log('newTodo form close');
+    const closeNewTodoModal = () => {
+        modal.style.display = 'none';
     };
 
     const renderProjectsBar  = (projectsArray) => {
@@ -700,7 +713,9 @@ const DisplayController = () => {
             listProjectTodos.appendChild(itemDiv);
         });
         content.appendChild(listProjectTodos);
-        content.appendChild(newTodo);
+        content.appendChild(projectTodoOptions);
+        closeNewTodoModal();
+        formNewTodo.reset();
     };
 
     const renderNoSelection = () => {
@@ -708,18 +723,28 @@ const DisplayController = () => {
     };
 
      //bind
-     newProjectText.addEventListener('click', openForm);
+     newProjectText.addEventListener('click', openNewProjectForm);
      formNewProject.addEventListener('submit', submitNewProject);
-     btnCancelNewProject.addEventListener('click', closeForm);
+     btnCancelNewProject.addEventListener('click', closeNewProjectForm);
      formNewTodo.addEventListener('submit', submitNewTodo);
      
-    newTodoText.addEventListener('click', openNewTodoForm);
-    btnCancelNewTodo.addEventListener('click', closeNewTodoForm)
+     newTodoText.addEventListener('click', openNewTodoModal);
+
+     //modal
+     window.addEventListener('click', checkTarget);
+     btnCloseModal.addEventListener('click', closeNewTodoModal);
 
     return {renderProjectsBar, renderProjectTodos, renderNoSelection};
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DisplayController);
+
+//TODO
+//let clone = template.content.cloneNode(true);
+// ^^ with ES6 template
+// maybe not actually... works fine now, just have to conclude whether or not it is good practice to 
+// cache the new projects UL, and then set the .content and the UL's innerHtml to empty
+// then append back in the UL
 
 /***/ }),
 
@@ -896,7 +921,6 @@ let d1 = (0,_display_controller__WEBPACK_IMPORTED_MODULE_3__["default"])();
 const addProject = (project) => {
     allProjects.push(project)
     d1.renderProjectsBar(allProjects);
-    console.log(`added ${project.getName()} in index`);
     if (allProjects.length == 1){
         selectProject(project);
     };
@@ -915,9 +939,9 @@ const removeProject = (id) => {
 };
 
 const addTodoToSelected = (todoItem) =>{
+    console.log(`added ${todoItem.getName()} to ${selectedProject.getName()}`);
     selectedProject.addItem(todoItem);
     d1.renderProjectTodos(selectedProject);
-    console.log(`added ${todoItem.getName()} to ${selectedProject.getName()}`);
 };
 
 const selectProject = (project) => {
@@ -931,6 +955,7 @@ _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('removeProject', removeProjec
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('addTodo', addTodoToSelected); 
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectProject', selectProject);
 
+d1.renderNoSelection();
 
 // !!!!!!! TODO 
 // we dont know which project to add the new todo to
@@ -944,4 +969,4 @@ _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectProject', selectProjec
 
 /******/ })()
 ;
-//# sourceMappingURL=main.81c0888ac5c58f572183.js.map
+//# sourceMappingURL=main.f3db32868bf690bfabf1.js.map
