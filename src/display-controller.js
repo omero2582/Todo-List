@@ -129,7 +129,7 @@ const DisplayController = () => {
      window.addEventListener('click', checkTarget);
      btnCloseModal.addEventListener('click', closeNewTodoModal);
 
-    return {renderProjectsBar, renderProjectTodos, renderNoSelection};
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openNewTodoModal};
 };
 
 export default DisplayController;

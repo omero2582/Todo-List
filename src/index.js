@@ -50,6 +50,7 @@ events.on('addTodo', addTodoToSelected);
 events.on('selectProject', selectProject);
 
 d1.renderNoSelection();
+d1.openNewTodoModal();
 
 // !!!!!!! TODO 
 // we dont know which project to add the new todo to
