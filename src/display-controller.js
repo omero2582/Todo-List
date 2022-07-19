@@ -17,7 +17,7 @@ const DisplayController = () => {
     
     //content
     const content = document.querySelector(".content");
-    const listProjectTodos = document.querySelector('.project-todos');
+    const tableProjectTodos = document.querySelector('.todos-table');
     const projectTodoOptions = document.querySelector('.project-todo-options');
     const newTodoText = document.querySelector('.new-todo-txt');
     const todosHeader = document.querySelector('.todos-header');
@@ -31,6 +31,12 @@ const DisplayController = () => {
     const newTodoDescription = document.querySelector('#todo-description');
     const newTodoPriority = document.querySelector('#todo-priority');
     const newTodoDueDate = document.querySelector('#todo-due-date');
+
+    //table headers
+    const nameHeader= document.querySelector('.name-header');
+    const descriptionHeader= document.querySelector('.description-header');
+    const dateHeader= document.querySelector('.date-header');
+    const priorityHeader= document.querySelector('.priority-header');
 
     const checkTarget = (e) => {
         if (e.target === modal){
@@ -101,31 +107,32 @@ const DisplayController = () => {
     const renderProjectTodos = (project) => {
         console.log(`---render projectTodos for ${project.getName()}`);
         content.innerHTML = '';
-        listProjectTodos.innerHTML = '';
-        listProjectTodos.appendChild(todosHeader);
-        project.getTodoItems().forEach( item => {
-            const itemLi = document.createElement('li');
-            const {getName, getDescription, getDate, getPriority} = item;
-            const newArray = [getName(), getDescription(), getDate().toDateString(), getPriority()];
-            console.log(newArray);
-            newArray.forEach(entry => {
-                let div = document.createElement('div');
-                div.textContent = entry;
-                itemLi.appendChild(div);
-            });
-            itemLi.classList.add('todo-item');
-            listProjectTodos.appendChild(itemLi);
-        });
-        content.appendChild(listProjectTodos);
+        tableProjectTodos.innerHTML = '';
+        tableProjectTodos.appendChild(todosHeader);
+        const tableBody = getTodoTableBody(project.getTodoItems());
+        tableProjectTodos.appendChild(tableBody);
+        content.appendChild(tableProjectTodos);
         content.appendChild(projectTodoOptions);
         closeNewTodoModal();
         formNewTodo.reset();
     };
 
-    const getTodoTable = ({getName, getDate, getPriority}) =>{
-        const newArray = [getName(), getDate(), getPriority()];
-        
-    }
+    const getTodoTableItemRow = ({getName, getDescription, getDate, getPriority}) =>{
+        const todoItemInfo = [getName(), getDescription(), getDate().toDateString(), getPriority()];
+        const tableRow = document.createElement('tr');
+        todoItemInfo.forEach(property => {
+            const tableData = document.createElement('td');
+            tableData.textContent = property;
+            tableRow.appendChild(tableData);
+        });
+        return tableRow;
+    };
+
+    const getTodoTableBody = (todoItems) => {
+        const tableBody = document.createElement('tbody');
+        todoItems.forEach(item => tableBody.appendChild(getTodoTableItemRow(item)));
+        return tableBody;
+    };
 
     const renderNoSelection = () => {
         content.innerHTML = 'No Selection';
@@ -142,6 +149,12 @@ const DisplayController = () => {
      //modal
      window.addEventListener('click', checkTarget);
      btnCloseModal.addEventListener('click', closeNewTodoModal);
+
+     //table
+     nameHeader.addEventListener('click', () => events.emit('sortName'));
+     descriptionHeader.addEventListener('click', () => events.emit('sortDescription'));
+     dateHeader.addEventListener('click', () => events.emit('sortDate'));
+     priorityHeader.addEventListener('click', () => events.emit('sortPriority'));
 
     return {renderProjectsBar, renderProjectTodos, renderNoSelection, openNewTodoModal};
 };

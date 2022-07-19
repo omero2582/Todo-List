@@ -122,11 +122,16 @@ li {
     display: none;
 }
 
-.project-todos *{
-    padding: 5px 0px;
+/*TABLE*/
+.todos-table{
+    border-collapse: collapse;
+}
+
+.todos-table th, .todos-table td{
+    padding: 5px 10px;
     background-color: var(--background-color);
-    display: grid;
-    grid-auto-flow: column;
+    border: 1px solid black;
+    text-align: center;
 }
 
 /*MODAL ------------*/

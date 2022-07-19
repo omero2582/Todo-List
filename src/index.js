@@ -3,6 +3,7 @@ import TodoItem from './todo-item';
 import Project from './Project';
 import DisplayController from './display-controller';
 import events from './pubsub';
+import DateItem from './Date-item';
 //TODO think about ID setting for Projects when you load them from localStorage...
 // id counter will end up resetting to 0, and new Book IDs will CLASH
 // have to save the currentID counter somewhere in the JSON ?? 
@@ -11,6 +12,12 @@ import events from './pubsub';
 let allProjects = [];
 let selectedProject;
 let d1 = DisplayController();
+const sortBy = {
+    name: true,
+    description: true,
+    date: true,
+    priority: true,
+}
 
 const addProject = (project) => {
     allProjects.push(project)
@@ -43,14 +50,60 @@ const selectProject = (project) => {
     d1.renderProjectTodos(project);
 };
 
+const sortName = () =>{
+    if (sortBy.name){
+        selectedProject.getTodoItems().sort( (t1, t2) => t1.getName().localeCompare(t2.getName()) );
+    }else{
+        selectedProject.getTodoItems().sort( (t1, t2) => t2.getName().localeCompare(t1.getName()) );
+    }
+    sortBy.name = !(sortBy.name);
+    d1.renderProjectTodos(selectedProject);
+};
+
+const sortDescription = () =>{
+    if (sortBy.description){
+        selectedProject.getTodoItems().sort( (t1, t2) => t1.getDescription().length - t2.getDescription().length );
+    }else{
+        selectedProject.getTodoItems().sort( (t1, t2) => t2.getDescription().length - t1.getDescription().length );
+    }
+    sortBy.description = !(sortBy.description);
+    d1.renderProjectTodos(selectedProject);
+};
+
+const sortDate = () =>{
+    if (sortBy.date){
+        selectedProject.getTodoItems().sort( (a,b) => b.getDate().getTime() - a.getDate().getTime());
+    }else{
+        selectedProject.getTodoItems().sort( (a,b) => a.getDate().getTime() - b.getDate().getTime());
+    }
+    sortBy.date = !(sortBy.date);
+    d1.renderProjectTodos(selectedProject);
+};
+
+const sortPriority = () =>{
+    if (sortBy.priority){
+        selectedProject.getTodoItems().sort( (a,b) => a.getPriority() - b.getPriority());
+    }else{
+        selectedProject.getTodoItems().sort( (a,b) => b.getPriority() - a.getPriority());
+    }
+    sortBy.priority = !(sortBy.priority);
+    d1.renderProjectTodos(selectedProject);
+};
+
 //events
 events.on('addProject', addProject);
 events.on('removeProject', removeProject);
 events.on('addTodo', addTodoToSelected); 
 events.on('selectProject', selectProject);
 
+//table events
+events.on('sortName', sortName);
+events.on('sortDescription', sortDescription);
+events.on('sortDate', sortDate);
+events.on('sortPriority', sortPriority);
+
 d1.renderNoSelection();
-d1.openNewTodoModal();
+addProject(Project('Default'));
 
 // !!!!!!! TODO 
 // we dont know which project to add the new todo to
