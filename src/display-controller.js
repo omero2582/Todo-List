@@ -20,6 +20,7 @@ const DisplayController = () => {
     const listProjectTodos = document.querySelector('.project-todos');
     const projectTodoOptions = document.querySelector('.project-todo-options');
     const newTodoText = document.querySelector('.new-todo-txt');
+    const todosHeader = document.querySelector('.todos-header');
 
     //modal newTodo
     const modal = document.querySelector('.modal');
@@ -101,17 +102,30 @@ const DisplayController = () => {
         console.log(`---render projectTodos for ${project.getName()}`);
         content.innerHTML = '';
         listProjectTodos.innerHTML = '';
+        listProjectTodos.appendChild(todosHeader);
         project.getTodoItems().forEach( item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.textContent = item.getName();
-            itemDiv.classList.add('todo-item');
-            listProjectTodos.appendChild(itemDiv);
+            const itemLi = document.createElement('li');
+            const {getName, getDescription, getDate, getPriority} = item;
+            const newArray = [getName(), getDescription(), getDate().toDateString(), getPriority()];
+            console.log(newArray);
+            newArray.forEach(entry => {
+                let div = document.createElement('div');
+                div.textContent = entry;
+                itemLi.appendChild(div);
+            });
+            itemLi.classList.add('todo-item');
+            listProjectTodos.appendChild(itemLi);
         });
         content.appendChild(listProjectTodos);
         content.appendChild(projectTodoOptions);
         closeNewTodoModal();
         formNewTodo.reset();
     };
+
+    const getTodoTable = ({getName, getDate, getPriority}) =>{
+        const newArray = [getName(), getDate(), getPriority()];
+        
+    }
 
     const renderNoSelection = () => {
         content.innerHTML = 'No Selection';
