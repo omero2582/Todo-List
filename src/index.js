@@ -15,9 +15,9 @@ let d1 = DisplayController();
 const sortBy = {
     name: true,
     description: true,
-    date: true,
+    dueDate: true,
     priority: true,
-}
+};
 
 const addProject = (project) => {
     allProjects.push(project)
@@ -30,11 +30,11 @@ const addProject = (project) => {
 };
 
 const removeProject = (id) => {
-    let index = allProjects.findIndex(project => project.getDate().getTime() === id);
+    let index = allProjects.findIndex(project => project.getId() === id);
     allProjects.splice(index, 1)
     d1.renderProjectsBar(allProjects);
     console.log(`removed project index ${id}`);
-    if (index == selectedProject.getDate().getTime() || allProjects.length == 0){
+    if (index == selectedProject.getId() || allProjects.length == 0){
         d1.renderNoSelection();
     }
 };
@@ -70,13 +70,23 @@ const sortDescription = () =>{
     d1.renderProjectTodos(selectedProject);
 };
 
-const sortDate = () =>{
-    if (sortBy.date){
-        selectedProject.getTodoItems().sort( (a,b) => b.getDate().getTime() - a.getDate().getTime());
+const sortCreationDate = () =>{
+    if (sortBy.creationDate){
+        selectedProject.getTodoItems().sort( (a,b) => b.getId() - a.getId());
     }else{
-        selectedProject.getTodoItems().sort( (a,b) => a.getDate().getTime() - b.getDate().getTime());
+        selectedProject.getTodoItems().sort( (a,b) => a.getId() - b.getId());
     }
-    sortBy.date = !(sortBy.date);
+    sortBy.creationDate = !(sortBy.creationDate);
+    d1.renderProjectTodos(selectedProject);
+};
+
+const sortDueDate = () =>{
+    if (sortBy.dueDate){
+        selectedProject.getTodoItems().sort( (a,b) => a.getDueDate().getTime() - b.getDueDate().getTime());
+    }else{
+        selectedProject.getTodoItems().sort( (a,b) => b.getDueDate().getTime() - a.getDueDate().getTime());
+    }
+    sortBy.dueDate = !(sortBy.dueDate);
     d1.renderProjectTodos(selectedProject);
 };
 
@@ -90,6 +100,11 @@ const sortPriority = () =>{
     d1.renderProjectTodos(selectedProject);
 };
 
+const selectTodoItemRow = (id) =>{
+    const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
+    console.log(todoItem.getName());
+};
+
 //events
 events.on('addProject', addProject);
 events.on('removeProject', removeProject);
@@ -99,10 +114,12 @@ events.on('selectProject', selectProject);
 //table events
 events.on('sortName', sortName);
 events.on('sortDescription', sortDescription);
-events.on('sortDate', sortDate);
+events.on('sortDueDate', sortDueDate);
 events.on('sortPriority', sortPriority);
+events.on('selectTodoItemRow', selectTodoItemRow);
 
 d1.renderNoSelection();
+const p1 = Project('test');
 addProject(Project('Default'));
 
 // !!!!!!! TODO 

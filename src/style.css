@@ -129,9 +129,16 @@ li {
 
 .todos-table th, .todos-table td{
     padding: 5px 10px;
-    background-color: var(--background-color);
     border: 1px solid black;
     text-align: center;
+}
+
+.todos-table tr{
+    background-color: var(--background-color);
+}
+.todos-table tr:hover{
+    background-color: aqua;
+    cursor: pointer;
 }
 
 /*MODAL ------------*/

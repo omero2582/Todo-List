@@ -86,9 +86,9 @@ const DisplayController = () => {
         
         listMyProjects.appendChild(myProjectsText);
         projectsArray.forEach(project => {
-            const id = project.getDate().getTime();
+            const id = project.getId();
             const li = document.createElement('li');
-            const closeButton =document.createElement('span');
+            const closeButton = document.createElement('span');
             closeButton.innerHTML = '&times';
             closeButton.classList.add('close-button');
             li.textContent = project.getName();
@@ -117,14 +117,15 @@ const DisplayController = () => {
         formNewTodo.reset();
     };
 
-    const getTodoTableItemRow = ({getName, getDescription, getDate, getPriority}) =>{
-        const todoItemInfo = [getName(), getDescription(), getDate().toDateString(), getPriority()];
+    const getTodoTableItemRow = ({getName, getDescription, getDueDate, getPriority, getId}) =>{
+        const todoItemInfo = [getName(), getDescription(), getDueDate().toDateString(), getPriority()];
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
             const tableData = document.createElement('td');
             tableData.textContent = property;
             tableRow.appendChild(tableData);
         });
+        tableRow.addEventListener('click', () => events.emit('selectTodoItemRow', getId()));
         return tableRow;
     };
 
@@ -153,7 +154,7 @@ const DisplayController = () => {
      //table
      nameHeader.addEventListener('click', () => events.emit('sortName'));
      descriptionHeader.addEventListener('click', () => events.emit('sortDescription'));
-     dateHeader.addEventListener('click', () => events.emit('sortDate'));
+     dateHeader.addEventListener('click', () => events.emit('sortDueDate'));
      priorityHeader.addEventListener('click', () => events.emit('sortPriority'));
 
     return {renderProjectsBar, renderProjectTodos, renderNoSelection, openNewTodoModal};

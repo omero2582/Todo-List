@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    --font-stack:Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    font-family: var(--font-stack);\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n    --close-btn-color: hsl(0, 0%, 0%);\r\n    --close-btn-hover: hsl(0, 0%, 22%);\r\n    /* box-sizing: border-box; */\r\n\r\n    --modal-txt-color: white;\r\n    --modal-background-color: rgb(0, 0, 0, 0.4);\r\n    --modal-content-color: teal;\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{    /*input:focus-visible, textarea:focus-visible*/\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}\r\n\r\n/*TABLE*/\r\n.todos-table{\r\n    border-collapse: collapse;\r\n}\r\n\r\n.todos-table th, .todos-table td{\r\n    padding: 5px 10px;\r\n    background-color: var(--background-color);\r\n    border: 1px solid black;\r\n    text-align: center;\r\n}\r\n\r\n/*MODAL ------------*/\r\n\r\n.modal{\r\n    background-color: var(--modal-background-color);\r\n    color: var(--modal-txt-color);\r\n \r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    padding-top: 100px;     /*moves modal content down*/\r\n    display: none;\r\n    z-index: 1;\r\n}\r\n\r\n.modal-content{\r\n    background-color:var(--modal-content-color);\r\n    width: 350px;\r\n    position: relative;\r\n    margin: auto;\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.modal-content h2{\r\n    font-weight: 500;\r\n    margin: 0;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.modal-content .modal-header{\r\n    padding: 23px 16px 12px;\r\n}\r\n\r\n.modal-header .close-modal{\r\n    background-color: var(--close-btn-color);\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 2px;\r\n    right: 16px;\r\n    display: flex;      /*center X*/\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.modal-header .close-modal:hover{\r\n    cursor: pointer;\r\n    background-color: var(--close-btn-hover);\r\n}\r\n\r\n.modal-body form{\r\n    padding: 0 20px;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.modal-body label{\r\n    font-size: 1.2rem;\r\n}\r\n\r\n.modal form p{\r\n    display: grid;\r\n    /* margin: 16px 0px;   default */\r\n    margin: 16px 0px;\r\n}\r\n\r\n.modal input{\r\n    font-size: 1.20rem;\r\n    width: 90%;\r\n}\r\n\r\n.modal input[type=\"number\"]{\r\n    font-size: 1.15rem;\r\n    width: 80px;\r\n}\r\n\r\n.modal textarea{\r\n    font-size: 1.15rem;\r\n    font-family: var(--font-stack);\r\n}\r\n\r\n.modal button[type=\"submit\"]{\r\n    font-size: 1.25rem;\r\n    width: 35%;\r\n    justify-self: center;\r\n    /* padding: 1px 6px;  default*/\r\n    padding: 4px 6px;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;IACI,kCAAkC;IAClC,oCAAoC;IACpC,qCAAqC;IACrC,wBAAwB;IACxB,sCAAsC;IACtC,mCAAmC;IACnC,mJAAmJ;IACnJ,8BAA8B;IAC9B;;;;;;;;;;;mBAWe;;IAEf,iCAAiC;IACjC,kCAAkC;IAClC,4BAA4B;;IAE5B,wBAAwB;IACxB,2CAA2C;IAC3C,2BAA2B;AAC/B;;AAEA;IACI,yCAAyC;IACzC,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,sCAAsC;IACtC,iBAAiB;AACrB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,YAAY;AAChB;;;AAGA;IACI,eAAe;IACf,uCAAuC;AAC3C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,YAAY;AAChB;;AAEA,yCAAyC,8CAA8C;IACnF,2CAA2C;AAC/C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA,QAAQ;AACR;IACI,yBAAyB;AAC7B;;AAEA;IACI,iBAAiB;IACjB,yCAAyC;IACzC,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA,qBAAqB;;AAErB;IACI,+CAA+C;IAC/C,6BAA6B;;IAE7B,eAAe;IACf,WAAW;IACX,YAAY;IACZ,MAAM;IACN,OAAO;IACP,kBAAkB,MAAM,2BAA2B;IACnD,aAAa;IACb,UAAU;AACd;;AAEA;IACI,2CAA2C;IAC3C,YAAY;IACZ,kBAAkB;IAClB,YAAY;IACZ,oBAAoB;AACxB;;AAEA;IACI,gBAAgB;IAChB,SAAS;IACT,iBAAiB;AACrB;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,wCAAwC;IACxC,YAAY;IACZ,WAAW;IACX,kBAAkB;IAClB,kBAAkB;IAClB,QAAQ;IACR,WAAW;IACX,aAAa,OAAO,WAAW;IAC/B,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,wCAAwC;AAC5C;;AAEA;IACI,eAAe;IACf,aAAa;IACb,0BAA0B;AAC9B;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,gCAAgC;IAChC,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;IAClB,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,WAAW;AACf;;AAEA;IACI,kBAAkB;IAClB,8BAA8B;AAClC;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,oBAAoB;IACpB,8BAA8B;IAC9B,gBAAgB;AACpB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\r\n\r\n:root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    --font-stack:Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    font-family: var(--font-stack);\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n    --close-btn-color: hsl(0, 0%, 0%);\r\n    --close-btn-hover: hsl(0, 0%, 22%);\r\n    /* box-sizing: border-box; */\r\n\r\n    --modal-txt-color: white;\r\n    --modal-background-color: rgb(0, 0, 0, 0.4);\r\n    --modal-content-color: teal;\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{    /*input:focus-visible, textarea:focus-visible*/\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}\r\n\r\n/*TABLE*/\r\n.todos-table{\r\n    border-collapse: collapse;\r\n}\r\n\r\n.todos-table th, .todos-table td{\r\n    padding: 5px 10px;\r\n    background-color: var(--background-color);\r\n    border: 1px solid black;\r\n    text-align: center;\r\n}\r\n\r\n/*MODAL ------------*/\r\n\r\n.modal{\r\n    background-color: var(--modal-background-color);\r\n    color: var(--modal-txt-color);\r\n \r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    padding-top: 100px;     /*moves modal content down*/\r\n    display: none;\r\n    z-index: 1;\r\n}\r\n\r\n.modal-content{\r\n    background-color:var(--modal-content-color);\r\n    width: 350px;\r\n    position: relative;\r\n    margin: auto;\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.modal-content h2{\r\n    font-weight: 500;\r\n    margin: 0;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.modal-content .modal-header{\r\n    padding: 23px 16px 12px;\r\n}\r\n\r\n.modal-header .close-modal{\r\n    background-color: var(--close-btn-color);\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 2px;\r\n    right: 16px;\r\n    display: flex;      /*center X*/\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.modal-header .close-modal:hover{\r\n    cursor: pointer;\r\n    background-color: var(--close-btn-hover);\r\n}\r\n\r\n.modal-body form{\r\n    padding: 0 20px;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.modal-body label{\r\n    font-size: 1.2rem;\r\n}\r\n\r\n.modal form p{\r\n    display: grid;\r\n    /* margin: 16px 0px;   default */\r\n    margin: 16px 0px;\r\n}\r\n\r\n.modal input{\r\n    font-size: 1.20rem;\r\n    width: 90%;\r\n}\r\n\r\n.modal input[type=\"number\"]{\r\n    font-size: 1.15rem;\r\n    width: 80px;\r\n}\r\n\r\n.modal textarea{\r\n    font-size: 1.15rem;\r\n    font-family: var(--font-stack);\r\n}\r\n\r\n.modal button[type=\"submit\"]{\r\n    font-size: 1.25rem;\r\n    width: 35%;\r\n    justify-self: center;\r\n    /* padding: 1px 6px;  default*/\r\n    padding: 4px 6px;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    --font-stack:Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    font-family: var(--font-stack);\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n    --close-btn-color: hsl(0, 0%, 0%);\r\n    --close-btn-hover: hsl(0, 0%, 22%);\r\n    /* box-sizing: border-box; */\r\n\r\n    --modal-txt-color: white;\r\n    --modal-background-color: rgb(0, 0, 0, 0.4);\r\n    --modal-content-color: teal;\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{    /*input:focus-visible, textarea:focus-visible*/\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}\r\n\r\n/*TABLE*/\r\n.todos-table{\r\n    border-collapse: collapse;\r\n}\r\n\r\n.todos-table th, .todos-table td{\r\n    padding: 5px 10px;\r\n    border: 1px solid black;\r\n    text-align: center;\r\n}\r\n\r\n.todos-table tr{\r\n    background-color: var(--background-color);\r\n}\r\n.todos-table tr:hover{\r\n    background-color: aqua;\r\n    cursor: pointer;\r\n}\r\n\r\n/*MODAL ------------*/\r\n\r\n.modal{\r\n    background-color: var(--modal-background-color);\r\n    color: var(--modal-txt-color);\r\n \r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    padding-top: 100px;     /*moves modal content down*/\r\n    display: none;\r\n    z-index: 1;\r\n}\r\n\r\n.modal-content{\r\n    background-color:var(--modal-content-color);\r\n    width: 350px;\r\n    position: relative;\r\n    margin: auto;\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.modal-content h2{\r\n    font-weight: 500;\r\n    margin: 0;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.modal-content .modal-header{\r\n    padding: 23px 16px 12px;\r\n}\r\n\r\n.modal-header .close-modal{\r\n    background-color: var(--close-btn-color);\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 2px;\r\n    right: 16px;\r\n    display: flex;      /*center X*/\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.modal-header .close-modal:hover{\r\n    cursor: pointer;\r\n    background-color: var(--close-btn-hover);\r\n}\r\n\r\n.modal-body form{\r\n    padding: 0 20px;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.modal-body label{\r\n    font-size: 1.2rem;\r\n}\r\n\r\n.modal form p{\r\n    display: grid;\r\n    /* margin: 16px 0px;   default */\r\n    margin: 16px 0px;\r\n}\r\n\r\n.modal input{\r\n    font-size: 1.20rem;\r\n    width: 90%;\r\n}\r\n\r\n.modal input[type=\"number\"]{\r\n    font-size: 1.15rem;\r\n    width: 80px;\r\n}\r\n\r\n.modal textarea{\r\n    font-size: 1.15rem;\r\n    font-family: var(--font-stack);\r\n}\r\n\r\n.modal button[type=\"submit\"]{\r\n    font-size: 1.25rem;\r\n    width: 35%;\r\n    justify-self: center;\r\n    /* padding: 1px 6px;  default*/\r\n    padding: 4px 6px;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;IACI,kCAAkC;IAClC,oCAAoC;IACpC,qCAAqC;IACrC,wBAAwB;IACxB,sCAAsC;IACtC,mCAAmC;IACnC,mJAAmJ;IACnJ,8BAA8B;IAC9B;;;;;;;;;;;mBAWe;;IAEf,iCAAiC;IACjC,kCAAkC;IAClC,4BAA4B;;IAE5B,wBAAwB;IACxB,2CAA2C;IAC3C,2BAA2B;AAC/B;;AAEA;IACI,yCAAyC;IACzC,aAAa;IACb,gCAAgC;AACpC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,sCAAsC;IACtC,iBAAiB;AACrB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,YAAY;AAChB;;;AAGA;IACI,eAAe;IACf,uCAAuC;AAC3C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,YAAY;AAChB;;AAEA,yCAAyC,8CAA8C;IACnF,2CAA2C;AAC/C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA,QAAQ;AACR;IACI,yBAAyB;AAC7B;;AAEA;IACI,iBAAiB;IACjB,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,yCAAyC;AAC7C;AACA;IACI,sBAAsB;IACtB,eAAe;AACnB;;AAEA,qBAAqB;;AAErB;IACI,+CAA+C;IAC/C,6BAA6B;;IAE7B,eAAe;IACf,WAAW;IACX,YAAY;IACZ,MAAM;IACN,OAAO;IACP,kBAAkB,MAAM,2BAA2B;IACnD,aAAa;IACb,UAAU;AACd;;AAEA;IACI,2CAA2C;IAC3C,YAAY;IACZ,kBAAkB;IAClB,YAAY;IACZ,oBAAoB;AACxB;;AAEA;IACI,gBAAgB;IAChB,SAAS;IACT,iBAAiB;AACrB;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,wCAAwC;IACxC,YAAY;IACZ,WAAW;IACX,kBAAkB;IAClB,kBAAkB;IAClB,QAAQ;IACR,WAAW;IACX,aAAa,OAAO,WAAW;IAC/B,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,wCAAwC;AAC5C;;AAEA;IACI,eAAe;IACf,aAAa;IACb,0BAA0B;AAC9B;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,gCAAgC;IAChC,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;IAClB,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,WAAW;AACf;;AAEA;IACI,kBAAkB;IAClB,8BAA8B;AAClC;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,oBAAoB;IACpB,8BAA8B;IAC9B,gBAAgB;AACpB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\r\n\r\n:root{\r\n    --nav-bar-color: hsl(0, 100%, 87%);\r\n    --side-bar-color:hsl(194, 100%, 76%);\r\n    --side-bar-hover: hsl(194, 100%, 60%);\r\n    --content-color: #fdffd0;\r\n    --background-color:hsl(160, 100%, 87%);\r\n    --options-color: rgb(255, 255, 255);\r\n    --font-stack:Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n    font-family: var(--font-stack);\r\n    /*\r\n    hsl(194, 100%, 76%);\r\n    hsl(160, 100%, 87%)\r\n    #fdffd0\r\n    beige\r\n    aquamarine;\r\n    lightskyblue\r\n    lightsalmon;\r\n    lightcoral\r\n\r\n    lightgreen\r\n    lightslategray*/\r\n\r\n    --close-btn-color: hsl(0, 0%, 0%);\r\n    --close-btn-hover: hsl(0, 0%, 22%);\r\n    /* box-sizing: border-box; */\r\n\r\n    --modal-txt-color: white;\r\n    --modal-background-color: rgb(0, 0, 0, 0.4);\r\n    --modal-content-color: teal;\r\n}\r\n\r\nbody{\r\n    background-color: var(--background-color);\r\n    display: grid;\r\n    grid-template-columns: 240px 1fr;\r\n}\r\n\r\nli {\r\n    list-style: none;\r\n}\r\n\r\n.header{\r\n    background-color: var(--nav-bar-color);\r\n    grid-column: 1/-1;\r\n}\r\n\r\n.side-bar{\r\n    background-color: var(--side-bar-color);\r\n}\r\n\r\n.side-bar ul{\r\n    padding: 0px;\r\n}\r\n\r\n\r\n.side-bar ul li:hover{\r\n    cursor: pointer;\r\n    background-color: var(--side-bar-hover);\r\n}\r\n\r\n.side-bar ul li{\r\n    padding: 10px 0px;\r\n    padding-left:40px;\r\n    font-size: 1.10rem;\r\n}\r\n\r\n.side-bar .new-project-txt{\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.side-bar .new-project-buttons button{\r\n    /* width: 70px; */\r\n    font-size: 0.95rem;\r\n    margin-top: 5px;\r\n    padding: 3px 10px;\r\n}\r\n\r\n.side-bar .new-project-buttons{\r\n    padding-left: 30px;\r\n}\r\n\r\n.side-bar .project-form{\r\n    display: none;\r\n    padding-top: 0;\r\n    padding-left: 15px;\r\n}\r\n\r\n.side-bar #new-project{\r\n    font-size: 1rem;\r\n    width: 200px;\r\n}\r\n\r\n.side-bar #new-project:focus-visible{    /*input:focus-visible, textarea:focus-visible*/\r\n    outline: -webkit-focus-ring-color solid 1px;\r\n}\r\n\r\n.main{\r\n    background-color: var(--content-color);\r\n}\r\n\r\n.main .options {\r\n    background-color: var(--options-color);\r\n}\r\n\r\n.side-bar ul .project{\r\n    display: grid;\r\n    grid-template-columns: 1fr max-content;\r\n    align-items: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.close-button{\r\n    margin-right: 7px;\r\n    padding: 0px 8px;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.new-todo .todo-form{\r\n    display: none;\r\n}\r\n\r\n/*TABLE*/\r\n.todos-table{\r\n    border-collapse: collapse;\r\n}\r\n\r\n.todos-table th, .todos-table td{\r\n    padding: 5px 10px;\r\n    border: 1px solid black;\r\n    text-align: center;\r\n}\r\n\r\n.todos-table tr{\r\n    background-color: var(--background-color);\r\n}\r\n.todos-table tr:hover{\r\n    background-color: aqua;\r\n    cursor: pointer;\r\n}\r\n\r\n/*MODAL ------------*/\r\n\r\n.modal{\r\n    background-color: var(--modal-background-color);\r\n    color: var(--modal-txt-color);\r\n \r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    padding-top: 100px;     /*moves modal content down*/\r\n    display: none;\r\n    z-index: 1;\r\n}\r\n\r\n.modal-content{\r\n    background-color:var(--modal-content-color);\r\n    width: 350px;\r\n    position: relative;\r\n    margin: auto;\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.modal-content h2{\r\n    font-weight: 500;\r\n    margin: 0;\r\n    font-size: 1.6rem;\r\n}\r\n\r\n.modal-content .modal-header{\r\n    padding: 23px 16px 12px;\r\n}\r\n\r\n.modal-header .close-modal{\r\n    background-color: var(--close-btn-color);\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 2px;\r\n    right: 16px;\r\n    display: flex;      /*center X*/\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.modal-header .close-modal:hover{\r\n    cursor: pointer;\r\n    background-color: var(--close-btn-hover);\r\n}\r\n\r\n.modal-body form{\r\n    padding: 0 20px;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.modal-body label{\r\n    font-size: 1.2rem;\r\n}\r\n\r\n.modal form p{\r\n    display: grid;\r\n    /* margin: 16px 0px;   default */\r\n    margin: 16px 0px;\r\n}\r\n\r\n.modal input{\r\n    font-size: 1.20rem;\r\n    width: 90%;\r\n}\r\n\r\n.modal input[type=\"number\"]{\r\n    font-size: 1.15rem;\r\n    width: 80px;\r\n}\r\n\r\n.modal textarea{\r\n    font-size: 1.15rem;\r\n    font-family: var(--font-stack);\r\n}\r\n\r\n.modal button[type=\"submit\"]{\r\n    font-size: 1.25rem;\r\n    width: 35%;\r\n    justify-self: center;\r\n    /* padding: 1px 6px;  default*/\r\n    padding: 4px 6px;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -573,15 +573,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Project = (name) =>{
-    let dateProto = (0,_Date_item__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    let {getDate} = (0,_Date_item__WEBPACK_IMPORTED_MODULE_1__["default"])();
     let todoItems = [];
     const getName = () => name;
     const getTodoItems = () => todoItems;
     const setName = (string) => name = string;
     const addItem = (todoItem) => todoItems.push(todoItem);
     const removeItem = (timeInMs) => todoItems.find(item => item.getDate().getTime() === timeInMs);
-    return Object.assign({}, dateProto,
-        {getName, getTodoItems, setName, addItem, removeItem}); 
+    const getId = () => getDate().getTime();
+    return {getName, getTodoItems, getDate, getId, setName, addItem, removeItem}; 
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Project);
@@ -691,9 +691,9 @@ const DisplayController = () => {
         
         listMyProjects.appendChild(myProjectsText);
         projectsArray.forEach(project => {
-            const id = project.getDate().getTime();
+            const id = project.getId();
             const li = document.createElement('li');
-            const closeButton =document.createElement('span');
+            const closeButton = document.createElement('span');
             closeButton.innerHTML = '&times';
             closeButton.classList.add('close-button');
             li.textContent = project.getName();
@@ -722,14 +722,15 @@ const DisplayController = () => {
         formNewTodo.reset();
     };
 
-    const getTodoTableItemRow = ({getName, getDescription, getDate, getPriority}) =>{
-        const todoItemInfo = [getName(), getDescription(), getDate().toDateString(), getPriority()];
+    const getTodoTableItemRow = ({getName, getDescription, getDueDate, getPriority, getId}) =>{
+        const todoItemInfo = [getName(), getDescription(), getDueDate().toDateString(), getPriority()];
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
             const tableData = document.createElement('td');
             tableData.textContent = property;
             tableRow.appendChild(tableData);
         });
+        tableRow.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('selectTodoItemRow', getId()));
         return tableRow;
     };
 
@@ -758,7 +759,7 @@ const DisplayController = () => {
      //table
      nameHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortName'));
      descriptionHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDescription'));
-     dateHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDate'));
+     dateHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDueDate'));
      priorityHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortPriority'));
 
     return {renderProjectsBar, renderProjectTodos, renderNoSelection, openNewTodoModal};
@@ -834,12 +835,14 @@ const TodoItem = (name) => {
     const setName = (string) => name = string;
     const setDescription = (string) => description = string;
     const setPriority = (string) => priority = string;
-    const setDueDate = (string) => dueDate = string;
+    const setDueDate = (string) => dueDate = new Date(string);  //can add an if to check if theres a valid string
+                                                                //in case i want to display a blank date
     const getName = () => name;
     const getDescription = () => description;
     const getPriority = () => priority;
     const getDueDate = () => dueDate;
-    return {setName, setDescription, setDueDate, setPriority, getDate, getName, getDueDate, getDescription, getPriority};
+    const getId = () => getDate().getTime();
+    return {setName, setDescription, setDueDate, setPriority, getDate, getId, getName, getDueDate, getDescription, getPriority};
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoItem);
@@ -949,9 +952,9 @@ let d1 = (0,_display_controller__WEBPACK_IMPORTED_MODULE_3__["default"])();
 const sortBy = {
     name: true,
     description: true,
-    date: true,
+    dueDate: true,
     priority: true,
-}
+};
 
 const addProject = (project) => {
     allProjects.push(project)
@@ -964,11 +967,11 @@ const addProject = (project) => {
 };
 
 const removeProject = (id) => {
-    let index = allProjects.findIndex(project => project.getDate().getTime() === id);
+    let index = allProjects.findIndex(project => project.getId() === id);
     allProjects.splice(index, 1)
     d1.renderProjectsBar(allProjects);
     console.log(`removed project index ${id}`);
-    if (index == selectedProject.getDate().getTime() || allProjects.length == 0){
+    if (index == selectedProject.getId() || allProjects.length == 0){
         d1.renderNoSelection();
     }
 };
@@ -1004,13 +1007,23 @@ const sortDescription = () =>{
     d1.renderProjectTodos(selectedProject);
 };
 
-const sortDate = () =>{
-    if (sortBy.date){
-        selectedProject.getTodoItems().sort( (a,b) => b.getDate().getTime() - a.getDate().getTime());
+const sortCreationDate = () =>{
+    if (sortBy.creationDate){
+        selectedProject.getTodoItems().sort( (a,b) => b.getId() - a.getId());
     }else{
-        selectedProject.getTodoItems().sort( (a,b) => a.getDate().getTime() - b.getDate().getTime());
+        selectedProject.getTodoItems().sort( (a,b) => a.getId() - b.getId());
     }
-    sortBy.date = !(sortBy.date);
+    sortBy.creationDate = !(sortBy.creationDate);
+    d1.renderProjectTodos(selectedProject);
+};
+
+const sortDueDate = () =>{
+    if (sortBy.dueDate){
+        selectedProject.getTodoItems().sort( (a,b) => a.getDueDate().getTime() - b.getDueDate().getTime());
+    }else{
+        selectedProject.getTodoItems().sort( (a,b) => b.getDueDate().getTime() - a.getDueDate().getTime());
+    }
+    sortBy.dueDate = !(sortBy.dueDate);
     d1.renderProjectTodos(selectedProject);
 };
 
@@ -1024,6 +1037,11 @@ const sortPriority = () =>{
     d1.renderProjectTodos(selectedProject);
 };
 
+const selectTodoItemRow = (id) =>{
+    const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
+    console.log(todoItem.getName());
+};
+
 //events
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('addProject', addProject);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('removeProject', removeProject);
@@ -1033,10 +1051,12 @@ _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectProject', selectProjec
 //table events
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortName', sortName);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortDescription', sortDescription);
-_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortDate', sortDate);
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortDueDate', sortDueDate);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortPriority', sortPriority);
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectTodoItemRow', selectTodoItemRow);
 
 d1.renderNoSelection();
+const p1 = (0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])('test');
 addProject((0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])('Default'));
 
 // !!!!!!! TODO 
@@ -1051,4 +1071,4 @@ addProject((0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])('Default'));
 
 /******/ })()
 ;
-//# sourceMappingURL=main.f793bb5e4697cce43dbc.js.map
+//# sourceMappingURL=main.b29b20e8c4c55a6d9f9f.js.map
