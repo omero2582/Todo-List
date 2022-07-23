@@ -5,9 +5,7 @@ import events from "./pubsub";
 const DisplayController = () => {
     //cache
     //sidebar
-    const myProjectsText = document.querySelector('.my-projects-txt');//remove this 1, place it outside the UL instead 
-                                                                    //and wrap the whole thing in a div.
-                                                                    // JK we need this cache anyways for when we click on this ->  show projects in .content
+    const myProjectsText = document.querySelector('.my-projects-txt');// need to add when we click on this ->  show projects in .content
     const listMyProjects = document.querySelector('.my-projects');
     const newProjectText = document.querySelector('.new-project-txt');
     const formNewProject = document.querySelector('.project-form');
@@ -22,25 +20,45 @@ const DisplayController = () => {
     const newTodoText = document.querySelector('.new-todo-txt');
     const todosHeader = document.querySelector('.todos-header');
 
-    //modal newTodo
-    const modal = document.querySelector('.modal');
-    const formNewTodo = document.querySelector('.todo-form');
-    const btnCloseModal = document.querySelector('.close-modal');
-    //newTodo inputs
-    const newTodoName = document.querySelector('#todo-name');
-    const newTodoDescription = document.querySelector('#todo-description');
-    const newTodoPriority = document.querySelector('#todo-priority');
-    const newTodoDueDate = document.querySelector('#todo-due-date');
-
     //table headers
     const nameHeader= document.querySelector('.name-header');
     const descriptionHeader= document.querySelector('.description-header');
     const dateHeader= document.querySelector('.date-header');
     const priorityHeader= document.querySelector('.priority-header');
 
+    //modal Todo template
+    const template = document.querySelector('.modal-template');
+
+    //modal newTodo
+    const clone1 = template.content.cloneNode(true);
+    const modal = clone1.querySelector('.modal');
+    document.body.appendChild(modal);
+    const formNewTodo = modal.querySelector('.todo-form');
+    const btnCloseModal = modal.querySelector('.close-modal');
+    //inputs newTodo
+    const newTodoName = modal.querySelector('#todo-name');
+    const newTodoDescription = modal.querySelector('#todo-description');
+    const newTodoPriority = modal.querySelector('#todo-priority');
+    const newTodoDueDate = modal.querySelector('#todo-due-date');
+
+    //modal editTodo
+    const cloneEdit = template.content.cloneNode(true);
+    const modalEditTodo = cloneEdit.querySelector('.modal');
+    document.body.appendChild(modalEditTodo);
+    const formEditTodo = modalEditTodo.querySelector('.todo-form');
+    const btnCloseEditModal = modalEditTodo.querySelector('.close-modal');
+    //inputs editTodo
+    const editTodoName = modalEditTodo.querySelector('#todo-name');
+    const editTodoDescription = modalEditTodo.querySelector('#todo-description');
+    const editTodoPriority = modalEditTodo.querySelector('#todo-priority');
+    const editTodoDueDate = modalEditTodo.querySelector('#todo-due-date');
+
+
     const checkTarget = (e) => {
         if (e.target === modal){
-            closeNewTodoModal(e);
+            closeModal(modal);
+        }else if (e.target == modalEditTodo){
+            closeModal(modalEditTodo);
         }
     }
 
@@ -59,7 +77,7 @@ const DisplayController = () => {
         t1.setPriority(newTodoPriority.value);
         t1.setDueDate(newTodoDueDate.value);
         events.emit('addTodo', t1);
-        closeNewTodoModal();
+        closeModal(modal);
         formNewTodo.reset();
     };
     
@@ -71,12 +89,13 @@ const DisplayController = () => {
     const closeNewProjectForm = () => {
         formNewProject.style.display = 'none';
     };
-    const openNewTodoModal = () => {
-        modal.style.display = 'initial';
+    const openModal = (modal) => {
+        modal.style.display = 'block';
+        console.log(modal);
         newTodoName.focus();
     };
 
-    const closeNewTodoModal = () => {
+    const closeModal = (modal) => {
         modal.style.display = 'none';
     };
 
@@ -113,11 +132,12 @@ const DisplayController = () => {
         tableProjectTodos.appendChild(tableBody);
         content.appendChild(tableProjectTodos);
         content.appendChild(projectTodoOptions);
-        closeNewTodoModal();
+        closeModal(modal);
         formNewTodo.reset();
     };
 
-    const getTodoTableItemRow = ({getName, getDescription, getDueDate, getPriority, getId}) =>{
+    const getTodoTableItemRow = (item) =>{
+        const {getName, getDescription, getDueDate, getPriority, getId} = item;
         const todoItemInfo = [getName(), getDescription(), getDueDate().toDateString(), getPriority()];
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
@@ -125,7 +145,7 @@ const DisplayController = () => {
             tableData.textContent = property;
             tableRow.appendChild(tableData);
         });
-        tableRow.addEventListener('click', () => events.emit('selectTodoItemRow', getId()));
+        tableRow.addEventListener('click', () => events.emit('selectTodoItemRow', item));
         return tableRow;
     };
 
@@ -139,25 +159,59 @@ const DisplayController = () => {
         content.innerHTML = 'No Selection';
     };
 
-     //bind
-     newProjectText.addEventListener('click', openNewProjectForm);
-     formNewProject.addEventListener('submit', submitNewProject);
-     btnCancelNewProject.addEventListener('click', closeNewProjectForm);
-     formNewTodo.addEventListener('submit', submitNewTodo);
-     
-     newTodoText.addEventListener('click', openNewTodoModal);
+    const submitEditTodo = (item) => {
+        // e.preventDefault(); put in caller
+        item.setName(editTodoName.value);
+        item.setDescription(editTodoDescription.value);
+        item.setPriority(editTodoPriority.value);
+        item.setDueDate(editTodoDueDate.value);
+        
+        closeModal(modalEditTodo);
+        formEditTodo.reset();
+        console.log(`${item.getName()} updated!`);
+        
+    };
 
-     //modal
-     window.addEventListener('click', checkTarget);
-     btnCloseModal.addEventListener('click', closeNewTodoModal);
+    const renderEditTodoModal = (todoItem) =>{
+        console.log('renderEditTODO');
 
-     //table
-     nameHeader.addEventListener('click', () => events.emit('sortName'));
-     descriptionHeader.addEventListener('click', () => events.emit('sortDescription'));
-     dateHeader.addEventListener('click', () => events.emit('sortDueDate'));
-     priorityHeader.addEventListener('click', () => events.emit('sortPriority'));
+        editTodoName.value = todoItem.getName();
+        editTodoDescription.value = todoItem.getDescription();
+        editTodoPriority.value = todoItem.getPriority();
+        editTodoDueDate.valueAsDate = todoItem.getDueDate(); 
 
-    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openNewTodoModal};
+        openModal(modalEditTodo);
+    };
+
+    //Bind
+    //NewProject
+    newProjectText.addEventListener('click', openNewProjectForm);
+    formNewProject.addEventListener('submit', submitNewProject);
+    btnCancelNewProject.addEventListener('click', closeNewProjectForm);
+
+    //Modals
+    window.addEventListener('click', checkTarget);
+
+    //modal NewTodo
+    formNewTodo.addEventListener('submit', submitNewTodo);
+    newTodoText.addEventListener('click', () => openModal(modal));
+    btnCloseModal.addEventListener('click', () => closeModal(modal));
+
+    //modal EditTodo
+    btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
+    formEditTodo.addEventListener('submit', e => {
+        e.preventDefault();
+        events.emit('submitEditTodo');
+    });
+
+    //table
+    nameHeader.addEventListener('click', () => events.emit('sortName'));
+    descriptionHeader.addEventListener('click', () => events.emit('sortDescription'));
+    dateHeader.addEventListener('click', () => events.emit('sortDueDate'));
+    priorityHeader.addEventListener('click', () => events.emit('sortPriority'));
+
+
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openModal, renderEditTodoModal, submitEditTodo};
 };
 
 export default DisplayController;

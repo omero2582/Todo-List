@@ -610,9 +610,7 @@ __webpack_require__.r(__webpack_exports__);
 const DisplayController = () => {
     //cache
     //sidebar
-    const myProjectsText = document.querySelector('.my-projects-txt');//remove this 1, place it outside the UL instead 
-                                                                    //and wrap the whole thing in a div.
-                                                                    // JK we need this cache anyways for when we click on this ->  show projects in .content
+    const myProjectsText = document.querySelector('.my-projects-txt');// need to add when we click on this ->  show projects in .content
     const listMyProjects = document.querySelector('.my-projects');
     const newProjectText = document.querySelector('.new-project-txt');
     const formNewProject = document.querySelector('.project-form');
@@ -627,25 +625,45 @@ const DisplayController = () => {
     const newTodoText = document.querySelector('.new-todo-txt');
     const todosHeader = document.querySelector('.todos-header');
 
-    //modal newTodo
-    const modal = document.querySelector('.modal');
-    const formNewTodo = document.querySelector('.todo-form');
-    const btnCloseModal = document.querySelector('.close-modal');
-    //newTodo inputs
-    const newTodoName = document.querySelector('#todo-name');
-    const newTodoDescription = document.querySelector('#todo-description');
-    const newTodoPriority = document.querySelector('#todo-priority');
-    const newTodoDueDate = document.querySelector('#todo-due-date');
-
     //table headers
     const nameHeader= document.querySelector('.name-header');
     const descriptionHeader= document.querySelector('.description-header');
     const dateHeader= document.querySelector('.date-header');
     const priorityHeader= document.querySelector('.priority-header');
 
+    //modal Todo template
+    const template = document.querySelector('.modal-template');
+
+    //modal newTodo
+    const clone1 = template.content.cloneNode(true);
+    const modal = clone1.querySelector('.modal');
+    document.body.appendChild(modal);
+    const formNewTodo = modal.querySelector('.todo-form');
+    const btnCloseModal = modal.querySelector('.close-modal');
+    //inputs newTodo
+    const newTodoName = modal.querySelector('#todo-name');
+    const newTodoDescription = modal.querySelector('#todo-description');
+    const newTodoPriority = modal.querySelector('#todo-priority');
+    const newTodoDueDate = modal.querySelector('#todo-due-date');
+
+    //modal editTodo
+    const cloneEdit = template.content.cloneNode(true);
+    const modalEditTodo = cloneEdit.querySelector('.modal');
+    document.body.appendChild(modalEditTodo);
+    const formEditTodo = modalEditTodo.querySelector('.todo-form');
+    const btnCloseEditModal = modalEditTodo.querySelector('.close-modal');
+    //inputs editTodo
+    const editTodoName = modalEditTodo.querySelector('#todo-name');
+    const editTodoDescription = modalEditTodo.querySelector('#todo-description');
+    const editTodoPriority = modalEditTodo.querySelector('#todo-priority');
+    const editTodoDueDate = modalEditTodo.querySelector('#todo-due-date');
+
+
     const checkTarget = (e) => {
         if (e.target === modal){
-            closeNewTodoModal(e);
+            closeModal(modal);
+        }else if (e.target == modalEditTodo){
+            closeModal(modalEditTodo);
         }
     }
 
@@ -664,7 +682,7 @@ const DisplayController = () => {
         t1.setPriority(newTodoPriority.value);
         t1.setDueDate(newTodoDueDate.value);
         _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('addTodo', t1);
-        closeNewTodoModal();
+        closeModal(modal);
         formNewTodo.reset();
     };
     
@@ -676,12 +694,13 @@ const DisplayController = () => {
     const closeNewProjectForm = () => {
         formNewProject.style.display = 'none';
     };
-    const openNewTodoModal = () => {
-        modal.style.display = 'initial';
+    const openModal = (modal) => {
+        modal.style.display = 'block';
+        console.log(modal);
         newTodoName.focus();
     };
 
-    const closeNewTodoModal = () => {
+    const closeModal = (modal) => {
         modal.style.display = 'none';
     };
 
@@ -718,11 +737,12 @@ const DisplayController = () => {
         tableProjectTodos.appendChild(tableBody);
         content.appendChild(tableProjectTodos);
         content.appendChild(projectTodoOptions);
-        closeNewTodoModal();
+        closeModal(modal);
         formNewTodo.reset();
     };
 
-    const getTodoTableItemRow = ({getName, getDescription, getDueDate, getPriority, getId}) =>{
+    const getTodoTableItemRow = (item) =>{
+        const {getName, getDescription, getDueDate, getPriority, getId} = item;
         const todoItemInfo = [getName(), getDescription(), getDueDate().toDateString(), getPriority()];
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
@@ -730,7 +750,7 @@ const DisplayController = () => {
             tableData.textContent = property;
             tableRow.appendChild(tableData);
         });
-        tableRow.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('selectTodoItemRow', getId()));
+        tableRow.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('selectTodoItemRow', item));
         return tableRow;
     };
 
@@ -744,25 +764,59 @@ const DisplayController = () => {
         content.innerHTML = 'No Selection';
     };
 
-     //bind
-     newProjectText.addEventListener('click', openNewProjectForm);
-     formNewProject.addEventListener('submit', submitNewProject);
-     btnCancelNewProject.addEventListener('click', closeNewProjectForm);
-     formNewTodo.addEventListener('submit', submitNewTodo);
-     
-     newTodoText.addEventListener('click', openNewTodoModal);
+    const submitEditTodo = (item) => {
+        // e.preventDefault(); put in caller
+        item.setName(editTodoName.value);
+        item.setDescription(editTodoDescription.value);
+        item.setPriority(editTodoPriority.value);
+        item.setDueDate(editTodoDueDate.value);
+        
+        closeModal(modalEditTodo);
+        formEditTodo.reset();
+        console.log(`${item.getName()} updated!`);
+        
+    };
 
-     //modal
-     window.addEventListener('click', checkTarget);
-     btnCloseModal.addEventListener('click', closeNewTodoModal);
+    const renderEditTodoModal = (todoItem) =>{
+        console.log('renderEditTODO');
 
-     //table
-     nameHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortName'));
-     descriptionHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDescription'));
-     dateHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDueDate'));
-     priorityHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortPriority'));
+        editTodoName.value = todoItem.getName();
+        editTodoDescription.value = todoItem.getDescription();
+        editTodoPriority.value = todoItem.getPriority();
+        editTodoDueDate.valueAsDate = todoItem.getDueDate(); 
 
-    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openNewTodoModal};
+        openModal(modalEditTodo);
+    };
+
+    //Bind
+    //NewProject
+    newProjectText.addEventListener('click', openNewProjectForm);
+    formNewProject.addEventListener('submit', submitNewProject);
+    btnCancelNewProject.addEventListener('click', closeNewProjectForm);
+
+    //Modals
+    window.addEventListener('click', checkTarget);
+
+    //modal NewTodo
+    formNewTodo.addEventListener('submit', submitNewTodo);
+    newTodoText.addEventListener('click', () => openModal(modal));
+    btnCloseModal.addEventListener('click', () => closeModal(modal));
+
+    //modal EditTodo
+    btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
+    formEditTodo.addEventListener('submit', e => {
+        e.preventDefault();
+        _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('submitEditTodo');
+    });
+
+    //table
+    nameHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortName'));
+    descriptionHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDescription'));
+    dateHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortDueDate'));
+    priorityHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortPriority'));
+
+
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openModal, renderEditTodoModal, submitEditTodo};
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DisplayController);
@@ -948,6 +1002,7 @@ __webpack_require__.r(__webpack_exports__);
 // Same problem will happen with our old Library project
 let allProjects = [];
 let selectedProject;
+let selectedTodoItem;
 let d1 = (0,_display_controller__WEBPACK_IMPORTED_MODULE_3__["default"])();
 const sortBy = {
     name: true,
@@ -1037,9 +1092,15 @@ const sortPriority = () =>{
     d1.renderProjectTodos(selectedProject);
 };
 
-const selectTodoItemRow = (id) =>{
-    const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
-    console.log(todoItem.getName());
+const selectTodoItemRow = (todoItem) =>{
+    // const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
+    selectedTodoItem = todoItem;
+    d1.renderEditTodoModal(todoItem);
+};
+
+const submitEditTodo = () => {
+    d1.submitEditTodo(selectedTodoItem);
+    d1.renderProjectTodos(selectedProject);
 };
 
 //events
@@ -1054,6 +1115,8 @@ _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortDescription', sortDescri
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortDueDate', sortDueDate);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortPriority', sortPriority);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectTodoItemRow', selectTodoItemRow);
+
+_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('submitEditTodo', submitEditTodo);
 
 d1.renderNoSelection();
 const p1 = (0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])('test');
@@ -1071,4 +1134,4 @@ addProject((0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])('Default'));
 
 /******/ })()
 ;
-//# sourceMappingURL=main.b29b20e8c4c55a6d9f9f.js.map
+//# sourceMappingURL=main.eeb83aae3af939720d92.js.map

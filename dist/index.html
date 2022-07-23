@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-<script defer src="main.b29b20e8c4c55a6d9f9f.js"></script></head>
+<script defer src="main.eeb83aae3af939720d92.js"></script></head>
 <body>
     <div class="header">
         <ul class="nav-bar">
@@ -53,35 +53,38 @@
         </div>
     </div>
 
-
-    <div class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close-modal">&times;</span>
-                <h2>Todo Item</h2>   
-            </div>
-            <div class="modal-body">
-                <form class='todo-form' action="">
-                    <p>
-                        <label for="todo-name">Name:</label>
-                        <input name="todo-name" id="todo-name" type="text" required>
-                    </p>
-                    <p>
-                        <label for="todo-description">Description</label>
-                        <textarea type="text" name="todo-description" id="todo-description" rows="8"></textarea>
-                    </p>
-                    <p>
-                        <label for="todo-priority">Priority #</label>
-                        <input type="number" name="todo-priority" id="todo-priority">
-                    </p>
-                    <p>
-                        <label for="todo-due-date">Due Date</label>
-                        <input type="date" name="todo-due-date" id="todo-due-date" >
-                    </p>
-                    <button type="submit" class="submit-todo2">Submit</button>
-                </form>
+    <template class="modal-template">
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close-modal">&times;</span>
+                    <h2>Todo Item</h2>   
+                </div>
+                <div class="modal-body">
+                    <form class='todo-form' action="">
+                        <p>
+                            <label for="todo-name">Name:</label>
+                            <input name="todo-name" id="todo-name" type="text" required>
+                        </p>
+                        <p>
+                            <label for="todo-description">Description</label>
+                            <textarea type="text" name="todo-description" id="todo-description" rows="8"></textarea>
+                        </p>
+                        <p>
+                            <label for="todo-priority">Priority #</label>
+                            <input type="number" name="todo-priority" id="todo-priority">
+                        </p>
+                        <p>
+                            <label for="todo-due-date">Due Date</label>
+                            <input type="date" name="todo-due-date" id="todo-due-date" >
+                        </p>
+                        <button type="submit" class="submit-todo2">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </template>
+
+    
 </body>
 </html>

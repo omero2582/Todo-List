@@ -11,6 +11,7 @@ import DateItem from './Date-item';
 // Same problem will happen with our old Library project
 let allProjects = [];
 let selectedProject;
+let selectedTodoItem;
 let d1 = DisplayController();
 const sortBy = {
     name: true,
@@ -100,9 +101,15 @@ const sortPriority = () =>{
     d1.renderProjectTodos(selectedProject);
 };
 
-const selectTodoItemRow = (id) =>{
-    const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
-    console.log(todoItem.getName());
+const selectTodoItemRow = (todoItem) =>{
+    // const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
+    selectedTodoItem = todoItem;
+    d1.renderEditTodoModal(todoItem);
+};
+
+const submitEditTodo = () => {
+    d1.submitEditTodo(selectedTodoItem);
+    d1.renderProjectTodos(selectedProject);
 };
 
 //events
@@ -117,6 +124,8 @@ events.on('sortDescription', sortDescription);
 events.on('sortDueDate', sortDueDate);
 events.on('sortPriority', sortPriority);
 events.on('selectTodoItemRow', selectTodoItemRow);
+
+events.on('submitEditTodo', submitEditTodo);
 
 d1.renderNoSelection();
 const p1 = Project('test');
