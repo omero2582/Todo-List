@@ -4,6 +4,7 @@
     --nav-bar-color: hsl(0, 100%, 87%);
     --side-bar-color:hsl(194, 100%, 76%);
     --side-bar-hover: hsl(194, 100%, 60%);
+    --side-bar-selected: hsl(194, 100%, 55%);
     --content-color: #fdffd0;
     --background-color:hsl(160, 100%, 87%);
     --options-color: rgb(255, 255, 255);
@@ -37,10 +38,6 @@ body{
     grid-template-columns: 240px 1fr;
 }
 
-li {
-    list-style: none;
-}
-
 .header{
     background-color: var(--nav-bar-color);
     grid-column: 1/-1;
@@ -50,12 +47,16 @@ li {
     background-color: var(--side-bar-color);
 }
 
-.side-bar ul{
+ul{
     padding: 0px;
 }
 
+li {
+    list-style: none;
+}
 
-.side-bar ul li:hover{
+
+.side-bar ul li:hover, .side-bar ul li.selected:hover{
     cursor: pointer;
     background-color: var(--side-bar-hover);
 }
@@ -110,6 +111,10 @@ li {
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.side-bar ul .project.selected{
+    background-color: var(--side-bar-selected);
 }
 
 .close-button{

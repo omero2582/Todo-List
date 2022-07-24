@@ -1,7 +1,9 @@
 import DateItem from "./Date-item";
 const TodoItem = (name) => {
-    let {getDate} = DateItem();
-    let description, priority, dueDate;
+    let {getDateCreated, setDateCreated} = DateItem();
+    let description;
+    let priority;
+    let dueDate;
     const setName = (string) => name = string;
     const setDescription = (string) => description = string;
     const setPriority = (string) => priority = string;
@@ -11,8 +13,9 @@ const TodoItem = (name) => {
     const getDescription = () => description;
     const getPriority = () => priority;
     const getDueDate = () => dueDate;
-    const getId = () => getDate().getTime();
-    return {setName, setDescription, setDueDate, setPriority, getDate, getId, getName, getDueDate, getDescription, getPriority};
+    const getId = () => getDateCreated().getTime();
+    const toJSON = () => Object.freeze({name, description, priority, dueDate, dateCreated: getDateCreated()});
+    return Object.freeze({name, description, priority, dueDate, toJSON, setName, setDescription, setDueDate, setPriority, getName, getDescription, getDueDate, getPriority, getDateCreated, setDateCreated, getId});
 };
 
 export default TodoItem;

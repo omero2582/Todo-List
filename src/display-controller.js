@@ -1,6 +1,7 @@
 import Project from "./Project";
 import TodoItem from "./todo-item";
 import events from "./pubsub";
+import { formatDistanceToNow } from 'date-fns';
 
 const DisplayController = () => {
     //cache
@@ -99,7 +100,7 @@ const DisplayController = () => {
         modal.style.display = 'none';
     };
 
-    const renderProjectsBar  = (projectsArray) => {
+    const renderProjectsBar  = (projectsArray, selectedProject) => {
         console.log('render Projects Bar')
         listMyProjects.innerHTML = '';
         
@@ -110,6 +111,11 @@ const DisplayController = () => {
             const closeButton = document.createElement('span');
             closeButton.innerHTML = '&times';
             closeButton.classList.add('close-button');
+
+            if (id == selectedProject.getId()){
+                li.classList.add('selected');
+            }
+
             li.textContent = project.getName();
             li.classList.add('project');
             li.setAttribute('data-key', id);
@@ -126,6 +132,12 @@ const DisplayController = () => {
     const renderProjectTodos = (project) => {
         console.log(`---render projectTodos for ${project.getName()}`);
         content.innerHTML = '';
+
+        const title = document.createElement('h2');
+        title.textContent = project.getName();
+        title.classList.add('project-title');
+        content.appendChild(title);
+
         tableProjectTodos.innerHTML = '';
         tableProjectTodos.appendChild(todosHeader);
         const tableBody = getTodoTableBody(project.getTodoItems());
@@ -138,14 +150,14 @@ const DisplayController = () => {
 
     const getTodoTableItemRow = (item) =>{
         const {getName, getDescription, getDueDate, getPriority, getId} = item;
-        const todoItemInfo = [getName(), getDescription(), getDueDate().toDateString(), getPriority()];
+        const todoItemInfo = [getName(), getDescription(), formatDistanceToNow(getDueDate()), getPriority()];     //getDueDate().toDateString()
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
             const tableData = document.createElement('td');
             tableData.textContent = property;
             tableRow.appendChild(tableData);
         });
-        tableRow.addEventListener('click', () => events.emit('selectTodoItemRow', item));
+        tableRow.addEventListener('click', () => events.emit('selectTodoItem', item));
         return tableRow;
     };
 
@@ -159,16 +171,19 @@ const DisplayController = () => {
         content.innerHTML = 'No Selection';
     };
 
-    const submitEditTodo = (item) => {
-        // e.preventDefault(); put in caller
-        item.setName(editTodoName.value);
-        item.setDescription(editTodoDescription.value);
-        item.setPriority(editTodoPriority.value);
-        item.setDueDate(editTodoDueDate.value);
+    const submitEditTodo = () => {
+        
+        const newProperties = {
+            name: editTodoName.value,
+            description: editTodoDescription.value,
+            priority: editTodoPriority.value,
+            dueDate: editTodoDueDate.value,
+        };
+
+        events.emit('submitEditTodo', newProperties);
         
         closeModal(modalEditTodo);
         formEditTodo.reset();
-        console.log(`${item.getName()} updated!`);
         
     };
 
@@ -201,7 +216,8 @@ const DisplayController = () => {
     btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
     formEditTodo.addEventListener('submit', e => {
         e.preventDefault();
-        events.emit('submitEditTodo');
+        submitEditTodo();
+        // events.emit('submitEditTodo');
     });
 
     //table
@@ -215,10 +231,3 @@ const DisplayController = () => {
 };
 
 export default DisplayController;
-
-//TODO
-//let clone = template.content.cloneNode(true);
-// ^^ with ES6 template
-// maybe not actually... works fine now, just have to conclude whether or not it is good practice to 
-// cache the new projects UL, and then set the .content and the UL's innerHtml to empty
-// then append back in the UL
