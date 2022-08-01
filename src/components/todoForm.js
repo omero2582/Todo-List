@@ -11,22 +11,26 @@ import events from "../pubsub";
             description: modal.querySelector('#todo-description'),
             priority: modal.querySelector('#todo-priority'),
             dueDate: modal.querySelector('#todo-due-date'),
+            key: Math.floor(Math.random()*1000001),
         },
         
     }
 
     const submitTodo = e => {
         e.preventDefault();
-        const {name, description, priority, dueDate} = todoModal.inputs;
+        const {name, description, priority, dueDate, key} = todoModal.inputs;
         //checks if date Input is valid date, then assigns it as new date object, or null 
         let date = isNaN(Date.parse(dueDate.value)) ? null:  new Date(dueDate.value);
-        const todo = new Todo(name.value, description.value, priority.value, date);
+        const todo = new Todo(name.value, description.value, priority.value, date, key);
 
         //adds the Todo to the currently selected project
         if (todoModal.edit) {
-            events.emit('editTodo', todo);
+            console.log(todo, 'YAH');
+            events.emit('submitEditTodo', todo);
+            todoModal.edit = false;
         } else {
             events.emit('addTodo', todo);
+            todoModal.edit = false;
         }
         closeModal();
         todoModal.form.reset();

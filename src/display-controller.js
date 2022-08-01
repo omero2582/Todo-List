@@ -179,21 +179,22 @@ const DisplayController = () => {
         content.innerHTML = 'No Selection';
     };
 
-    const submitEditTodo = () => {
+    // const submitEditTodo = () => {
         
-        const newProperties = {
-            name: editTodoName.value,
-            description: editTodoDescription.value,
-            priority: editTodoPriority.value,
-            dueDate: editTodoDueDate.value,
-        };
+    //     const newProperties = {
+    //         name: editTodoName.value,
+    //         description: editTodoDescription.value,
+    //         priority: editTodoPriority.value,
+    //         dueDate: editTodoDueDate.value,
+            
+    //     };
 
-        events.emit('submitEditTodo', newProperties);
+    //     events.emit('submitEditTodo', newProperties);
         
-        closeModal(modalEditTodo);
-        formEditTodo.reset();
+    //     closeModal();
+    //     formEditTodo.reset();
         
-    };
+    // };
 
     const renderEditTodoModal = (todoItem) =>{
         console.log('renderEditTODO');
@@ -202,8 +203,9 @@ const DisplayController = () => {
         editTodoDescription.value = todoItem.getDescription();
         editTodoPriority.value = todoItem.getPriority();
         editTodoDueDate.valueAsDate = todoItem.getDueDate(); 
+        console.log("yo mamam");
 
-        openModal(modalEditTodo);
+        openModal();
     };
 
     //Bind
@@ -235,7 +237,7 @@ const DisplayController = () => {
     priorityHeader.addEventListener('click', () => events.emit('sortPriority'));
 
 
-    return {renderProjectsBar, renderProjectTodos, renderNoSelection, renderEditTodoModal, submitEditTodo};
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection, renderEditTodoModal};
 };
 
 export default DisplayController;

@@ -1,10 +1,11 @@
 class Todo{
     
-    constructor(name, description = '-', priority = '-', dueDate){
+    constructor(name, description = '-', priority = '-', dueDate, key){
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.key = key;
     }
 
     getName() {
@@ -18,6 +19,9 @@ class Todo{
     }
     getPriority() {
         return this.priority;
+    }
+    getKey(){
+        return this.key;
     }
     setName(name){
         this.name = name;

@@ -135,21 +135,25 @@ const sortPriority = () =>{
 const selectTodoItem = (todoItem) =>{
     // selectedTodoItem = todoItem;
     // d1.renderEditTodoModal(todoItem);
+
     editModal(todoItem);
 };
 
-// const submitEditTodo = ({name, description, priority, dueDate}) => {
-
-//     selectedTodoItem.setName(name);
-//     selectedTodoItem.setDescription(description);
-//     selectedTodoItem.setPriority(priority);
-//     selectedTodoItem.setDueDate(dueDate);
-
-        //displayTable
-//     d1.renderProjectTodos(selectedProject);
-//     console.log(`${name} updated!`);
-//     saveData();
-// };
+const submitEditTodo = ({name, description, priority, dueDate, key}) => {
+        
+    console.log("COMPATE KEYS", selectedProject.getTodoItems()[0], "EDITED KEY COLON", key);
+    let test =selectedProject.getTodoItems().map(element => {
+        if (element.getKey() === key){
+            return {name, description, priority, dueDate, key}
+        }else{
+            return element;
+        }  
+    }) ;
+    console.log(test, 'test');
+    d1.renderProjectTodos(selectedProject);
+    console.log(allProjects);
+    saveData();
+};
 
 const parseFromJSON = JSONarray => {
     //localStorage retrieve
@@ -157,13 +161,14 @@ const parseFromJSON = JSONarray => {
     const allProjectsParsed = JSON.parse(JSONarray);
     allProjectsParsed.forEach( project => {
         const {name, dateCreated, todoItems} = project;
+        console.log(todoItems, 'FFFFFFFF');
         const projectObject = Project(name);
         projectObject.setDateCreated(dateCreated);
 
         //loop through todoItems and re-create the real objects
         todoItems.forEach( item => {
-            const {name, description, priority, dueDate, dateCreated} = item;
-            const todo = new Todo(name, description, priority, new Date(dueDate), dateCreated);
+            const {name, description, priority, dueDate, dateCreated, key} = item;
+            const todo = new Todo(name, description, priority, new Date(dueDate), dateCreated, key);
             projectObject.addItem(todo);
         });
 
@@ -186,7 +191,7 @@ events.on('sortDueDate', sortDueDate);
 events.on('sortPriority', sortPriority);
 events.on('selectTodoItem', selectTodoItem);
 
-// events.on('submitEditTodo', submitEditTodo);
+events.on('submitEditTodo', submitEditTodo);
 
 
 
@@ -219,7 +224,9 @@ if (!loadedProjects){
     //load default if nothing in Local Storage
     addProject(Project('Default'));
     testAddTODOItems();
+    
 }else{
+    console.log(loadedProjects, 'LOADEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEED');
     parseFromJSON(loadedProjects);
 }
 
