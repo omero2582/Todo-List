@@ -148,9 +148,15 @@ const DisplayController = () => {
         formNewTodo.reset();
     };
 
+    const getFormattedDate = (date) => {
+        let formattedDate = (date == null) ? '-' : formatDistanceToNow(date);
+        return  formattedDate;
+    };
+
     const getTodoTableItemRow = (item) =>{
         const {getName, getDescription, getDueDate, getPriority, getId} = item;
-        const todoItemInfo = [getName(), getDescription(), formatDistanceToNow(getDueDate()), getPriority()];     //getDueDate().toDateString()
+         
+        const todoItemInfo = [getName(), getDescription(), getFormattedDate(getDueDate()) , getPriority()];     //getDueDate().toDateString()
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
             const tableData = document.createElement('td');

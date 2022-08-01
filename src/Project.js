@@ -5,7 +5,7 @@ const Project = (name) =>{
     let {getDateCreated, setDateCreated} = DateItem();
     let todoItems = [];
     const getName = () => name;
-    const getTodoItems = () => Object.freeze([...todoItems]);
+    const getTodoItems = () => todoItems;
     const setName = (string) => name = string;
     const addItem = (todoItem) => todoItems.push(todoItem);
     const removeItem = (timeInMs) => todoItems.find(item => item.getDate().getTime() === timeInMs);

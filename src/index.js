@@ -98,10 +98,22 @@ const sortCreationDate = () =>{
 };
 
 const sortDueDate = () =>{
+    //TODOOOOOO clean this clean this telcvjaelejalejclalj
+    //TODO this is horrible but bandaid fix, since we store time as null when input is empty
     if (sortBy.dueDate){
-        selectedProject.getTodoItems().sort( (a,b) => a.getDueDate().getTime() - b.getDueDate().getTime());
+        selectedProject.getTodoItems().sort( (a,b) => {
+            if (a.getDueDate() == null || b.getDueDate() == null){
+                return -1;
+            } 
+            return a.getDueDate().getTime() - b.getDueDate().getTime() 
+        });
     }else{
-        selectedProject.getTodoItems().sort( (a,b) => b.getDueDate().getTime() - a.getDueDate().getTime());
+        selectedProject.getTodoItems().sort( (a,b) => {
+            if (a.getDueDate() == null || b.getDueDate() == null){
+                return -1;
+            } 
+            return b.getDueDate().getTime() - a.getDueDate().getTime() 
+        });
     }
     sortBy.dueDate = !(sortBy.dueDate);
     d1.renderProjectTodos(selectedProject);
