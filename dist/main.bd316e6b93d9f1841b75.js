@@ -2187,6 +2187,82 @@ const Project = (name) =>{
 
 /***/ }),
 
+/***/ "./src/components/todoForm.js":
+/*!************************************!*\
+  !*** ./src/components/todoForm.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "closeModal": () => (/* binding */ closeModal),
+/* harmony export */   "editModal": () => (/* binding */ editModal),
+/* harmony export */   "modal": () => (/* binding */ modal),
+/* harmony export */   "openModal": () => (/* binding */ openModal)
+/* harmony export */ });
+/* harmony import */ var _models_todo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/todo */ "./src/models/todo.js");
+/* harmony import */ var _pubsub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pubsub */ "./src/pubsub.js");
+
+
+
+    const modal = document.querySelector('.modal');
+    const todoModal = {
+        edit: false,
+        form: modal.querySelector('.todo-form'),
+        btnClose: modal.querySelector('.close-modal'),
+        inputs: {
+            name: modal.querySelector('#todo-name'),
+            description: modal.querySelector('#todo-description'),
+            priority: modal.querySelector('#todo-priority'),
+            dueDate: modal.querySelector('#todo-due-date'),
+        },
+        
+    }
+
+    const submitTodo = e => {
+        e.preventDefault();
+        const {name, description, priority, dueDate} = todoModal.inputs;
+        //checks if date Input is valid date, then assigns it as new date object, or null 
+        let date = isNaN(Date.parse(dueDate.value)) ? null:  new Date(dueDate.value);
+        const todo = new _models_todo__WEBPACK_IMPORTED_MODULE_0__["default"](name.value, description.value, priority.value, date);
+
+        //adds the Todo to the currently selected project
+        if (todoModal.edit) {
+            _pubsub__WEBPACK_IMPORTED_MODULE_1__["default"].emit('editTodo', todo);
+        } else {
+            _pubsub__WEBPACK_IMPORTED_MODULE_1__["default"].emit('addTodo', todo);
+        }
+        closeModal();
+        todoModal.form.reset();
+    };
+
+    const openModal = () => {
+        modal.style.display = 'block';
+        todoModal.inputs.name.focus();
+    };
+
+    const closeModal = () => {
+        modal.style.display = 'none';
+    };
+
+    const editModal = ({name, description, priority, dueDate}) => {
+        todoModal.inputs.name.value = name;
+        todoModal.inputs.description.value = description;
+        todoModal.inputs.priority.value = priority;
+        todoModal.inputs.dueDate.value = dueDate;
+        todoModal.edit = true;
+        openModal();
+        
+    }
+
+    todoModal.form.addEventListener('submit', submitTodo);
+    todoModal.btnClose.addEventListener('click', () => closeModal());
+
+    
+    
+
+/***/ }),
+
 /***/ "./src/display-controller.js":
 /*!***********************************!*\
   !*** ./src/display-controller.js ***!
@@ -2200,7 +2276,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ "./src/Project.js");
 /* harmony import */ var _todo_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo-item */ "./src/todo-item.js");
 /* harmony import */ var _pubsub__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pubsub */ "./src/pubsub.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/formatDistanceToNow/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/formatDistanceToNow/index.js");
+/* harmony import */ var _models_todo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/todo */ "./src/models/todo.js");
+/* harmony import */ var _components_todoForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/todoForm */ "./src/components/todoForm.js");
+
+
 
 
 
@@ -2233,36 +2313,34 @@ const DisplayController = () => {
     //modal Todo template
     const template = document.querySelector('.modal-template');
 
-    //modal newTodo
-    const clone1 = template.content.cloneNode(true);
-    const modal = clone1.querySelector('.modal');
-    document.body.appendChild(modal);
-    const formNewTodo = modal.querySelector('.todo-form');
-    const btnCloseModal = modal.querySelector('.close-modal');
-    //inputs newTodo
-    const newTodoName = modal.querySelector('#todo-name');
-    const newTodoDescription = modal.querySelector('#todo-description');
-    const newTodoPriority = modal.querySelector('#todo-priority');
-    const newTodoDueDate = modal.querySelector('#todo-due-date');
+    // //modal newTodo
+    // const clone1 = template.content.cloneNode(true);
+    // const modal = clone1.querySelector('.modal');
+    // document.body.appendChild(modal);
+    // const formNewTodo = modal.querySelector('.todo-form');
+    // const btnCloseModal = modal.querySelector('.close-modal');
+    // //inputs newTodo
+    // const newTodoName = modal.querySelector('#todo-name');
+    // const newTodoDescription = modal.querySelector('#todo-description');
+    // const newTodoPriority = modal.querySelector('#todo-priority');
+    // const newTodoDueDate = modal.querySelector('#todo-due-date');
 
-    //modal editTodo
-    const cloneEdit = template.content.cloneNode(true);
-    const modalEditTodo = cloneEdit.querySelector('.modal');
-    document.body.appendChild(modalEditTodo);
-    const formEditTodo = modalEditTodo.querySelector('.todo-form');
-    const btnCloseEditModal = modalEditTodo.querySelector('.close-modal');
-    //inputs editTodo
-    const editTodoName = modalEditTodo.querySelector('#todo-name');
-    const editTodoDescription = modalEditTodo.querySelector('#todo-description');
-    const editTodoPriority = modalEditTodo.querySelector('#todo-priority');
-    const editTodoDueDate = modalEditTodo.querySelector('#todo-due-date');
+    // //modal editTodo
+    // const cloneEdit = template.content.cloneNode(true);
+    // const modalEditTodo = cloneEdit.querySelector('.modal');
+    // document.body.appendChild(modalEditTodo);
+    // const formEditTodo = modalEditTodo.querySelector('.todo-form');
+    // const btnCloseEditModal = modalEditTodo.querySelector('.close-modal');
+    // //inputs editTodo
+    // const editTodoName = modalEditTodo.querySelector('#todo-name');
+    // const editTodoDescription = modalEditTodo.querySelector('#todo-description');
+    // const editTodoPriority = modalEditTodo.querySelector('#todo-priority');
+    // const editTodoDueDate = modalEditTodo.querySelector('#todo-due-date');
 
 
     const checkTarget = (e) => {
-        if (e.target === modal){
-            closeModal(modal);
-        }else if (e.target == modalEditTodo){
-            closeModal(modalEditTodo);
+        if (e.target === _components_todoForm__WEBPACK_IMPORTED_MODULE_4__.modal){
+            (0,_components_todoForm__WEBPACK_IMPORTED_MODULE_4__.closeModal)();
         }
     }
 
@@ -2274,16 +2352,17 @@ const DisplayController = () => {
         formNewProject.reset();
     };
     
-    const submitNewTodo = (e) => {
-        e.preventDefault();
-        let t1 = (0,_todo_item__WEBPACK_IMPORTED_MODULE_1__["default"])(newTodoName.value);
-        t1.setDescription(newTodoDescription.value);
-        t1.setPriority(newTodoPriority.value);
-        t1.setDueDate(newTodoDueDate.value);
-        _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('addTodo', t1);
-        closeModal(modal);
-        formNewTodo.reset();
-    };
+    // const submitNewTodo = (e) => {
+    //     e.preventDefault();
+    //     //checks if date Input is valid date, then assigns it as new date object, or null 
+    //     let dueDate = isNaN(Date.parse(newTodoDueDate.value)) ? null:  new Date(newTodoDueDate.value);
+    //     const todo = new Todo(newTodoName.value, newTodoDescription.value, newTodoPriority.value, dueDate);
+
+    //     //adds the Todo to the currently selected project
+    //     events.emit('addTodo', todo);
+    //     closeModal(modal);
+    //     formNewTodo.reset();
+    // };
     
     const openNewProjectForm = () => {
         formNewProject.style.display = 'inline-block';
@@ -2293,15 +2372,15 @@ const DisplayController = () => {
     const closeNewProjectForm = () => {
         formNewProject.style.display = 'none';
     };
-    const openModal = (modal) => {
-        modal.style.display = 'block';
-        console.log(modal);
-        newTodoName.focus();
-    };
+    // const openModal = (modal) => {
+    //     modal.style.display = 'block';
+    //     console.log(modal);
+    //     newTodoName.focus();
+    // };
 
-    const closeModal = (modal) => {
-        modal.style.display = 'none';
-    };
+    // const closeModal = (modal) => {
+    //     modal.style.display = 'none';
+    // };
 
     const renderProjectsBar  = (projectsArray, selectedProject) => {
         console.log('render Projects Bar')
@@ -2347,19 +2426,20 @@ const DisplayController = () => {
         tableProjectTodos.appendChild(tableBody);
         content.appendChild(tableProjectTodos);
         content.appendChild(projectTodoOptions);
-        closeModal(modal);
-        formNewTodo.reset();
+        (0,_components_todoForm__WEBPACK_IMPORTED_MODULE_4__.closeModal)();
+        // formNewTodo.reset();
+        //figre ti out later
     };
 
     const getFormattedDate = (date) => {
-        let formattedDate = (date == null) ? '-' : (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(date);
+        let formattedDate = (date == null) ? '-' : (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(date);
         return  formattedDate;
     };
 
+    //render table row for each todo
     const getTodoTableItemRow = (item) =>{
-        const {getName, getDescription, getDueDate, getPriority, getId} = item;
-         
-        const todoItemInfo = [getName(), getDescription(), getFormattedDate(getDueDate()) , getPriority()];     //getDueDate().toDateString()
+        const {name, description, priority, dueDate} = item;
+        const todoItemInfo = [name, description, priority, getFormattedDate(dueDate)];     //getDueDate().toDateString()
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
             const tableData = document.createElement('td');
@@ -2391,7 +2471,7 @@ const DisplayController = () => {
 
         _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('submitEditTodo', newProperties);
         
-        closeModal(modalEditTodo);
+        (0,_components_todoForm__WEBPACK_IMPORTED_MODULE_4__.closeModal)(modalEditTodo);
         formEditTodo.reset();
         
     };
@@ -2404,7 +2484,7 @@ const DisplayController = () => {
         editTodoPriority.value = todoItem.getPriority();
         editTodoDueDate.valueAsDate = todoItem.getDueDate(); 
 
-        openModal(modalEditTodo);
+        (0,_components_todoForm__WEBPACK_IMPORTED_MODULE_4__.openModal)(modalEditTodo);
     };
 
     //Bind
@@ -2417,17 +2497,17 @@ const DisplayController = () => {
     window.addEventListener('click', checkTarget);
 
     //modal NewTodo
-    formNewTodo.addEventListener('submit', submitNewTodo);
-    newTodoText.addEventListener('click', () => openModal(modal));
-    btnCloseModal.addEventListener('click', () => closeModal(modal));
+    // formNewTodo.addEventListener('submit', submitTodo);
+    newTodoText.addEventListener('click', () => (0,_components_todoForm__WEBPACK_IMPORTED_MODULE_4__.openModal)());
+    // btnCloseModal.addEventListener('click', () => closeModal(modal));
 
     //modal EditTodo
-    btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
-    formEditTodo.addEventListener('submit', e => {
-        e.preventDefault();
-        submitEditTodo();
-        // events.emit('submitEditTodo');
-    });
+    // btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
+    // formEditTodo.addEventListener('submit', e => {
+    //     e.preventDefault();
+    //     submitEditTodo();
+    //     // events.emit('submitEditTodo');
+    // });
 
     //table
     nameHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortName'));
@@ -2436,11 +2516,63 @@ const DisplayController = () => {
     priorityHeader.addEventListener('click', () => _pubsub__WEBPACK_IMPORTED_MODULE_2__["default"].emit('sortPriority'));
 
 
-    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openModal, renderEditTodoModal, submitEditTodo};
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection, renderEditTodoModal, submitEditTodo};
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DisplayController);
 
+
+/***/ }),
+
+/***/ "./src/models/todo.js":
+/*!****************************!*\
+  !*** ./src/models/todo.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class Todo{
+    
+    constructor(name, description = '-', priority = '-', dueDate){
+        this.name = name;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+    }
+
+    getName() {
+        return this.name;
+    }
+    getDescription() {
+        return this.description;
+    }
+    getDueDate() {
+        return this.dueDate;
+    }
+    getPriority() {
+        return this.priority;
+    }
+    setName(name){
+        this.name = name;
+    }
+    setDescription(description) {
+        this.description = description;
+    }
+    setDueDate(dueDate) {
+        this.dueDate = dueDate;
+    }
+    setPriority(priority) {
+        this.priority = priority;
+    }
+    
+    
+
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Todo);
 
 /***/ }),
 
@@ -2612,6 +2744,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _display_controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./display-controller */ "./src/display-controller.js");
 /* harmony import */ var _pubsub__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pubsub */ "./src/pubsub.js");
 /* harmony import */ var _Date_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Date-item */ "./src/Date-item.js");
+/* harmony import */ var _models_todo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/todo */ "./src/models/todo.js");
+/* harmony import */ var _components_todoForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/todoForm */ "./src/components/todoForm.js");
+
+
 
 
 
@@ -2623,6 +2759,7 @@ __webpack_require__.r(__webpack_exports__);
 // have to save the currentID counter somewhere in the JSON ?? 
 // either way, dont know if I should set the ID here, or inside Projects' prototype
 // Same problem will happen with our old Library project
+
 let allProjects = [];
 let selectedProject;
 let selectedTodoItem;
@@ -2744,44 +2881,42 @@ const sortPriority = () =>{
 };
 
 const selectTodoItem = (todoItem) =>{
-    // const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
-    selectedTodoItem = todoItem;
-    d1.renderEditTodoModal(todoItem);
+    // selectedTodoItem = todoItem;
+    // d1.renderEditTodoModal(todoItem);
+    (0,_components_todoForm__WEBPACK_IMPORTED_MODULE_7__.editModal)(todoItem);
 };
 
-const submitEditTodo = ({name, description, priority, dueDate}) => {
+// const submitEditTodo = ({name, description, priority, dueDate}) => {
 
-    selectedTodoItem.setName(name);
-    selectedTodoItem.setDescription(description);
-    selectedTodoItem.setPriority(priority);
-    selectedTodoItem.setDueDate(dueDate);
-    d1.renderProjectTodos(selectedProject);
-    console.log(`${name} updated!`);
-    saveData();
-};
+//     selectedTodoItem.setName(name);
+//     selectedTodoItem.setDescription(description);
+//     selectedTodoItem.setPriority(priority);
+//     selectedTodoItem.setDueDate(dueDate);
 
-const parseFromJSON = (JSONarray) => {
+        //displayTable
+//     d1.renderProjectTodos(selectedProject);
+//     console.log(`${name} updated!`);
+//     saveData();
+// };
+
+const parseFromJSON = JSONarray => {
     //localStorage retrieve
     clearAllProjects();
     const allProjectsParsed = JSON.parse(JSONarray);
-    allProjectsParsed.forEach( (project) => {
+    allProjectsParsed.forEach( project => {
         const {name, dateCreated, todoItems} = project;
-        const p1 = (0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])(name);
-        p1.setDateCreated(dateCreated);
+        const projectObject = (0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])(name);
+        projectObject.setDateCreated(dateCreated);
 
         //loop through todoItems and re-create the real objects
         todoItems.forEach( item => {
             const {name, description, priority, dueDate, dateCreated} = item;
-            const t1 = (0,_todo_item__WEBPACK_IMPORTED_MODULE_1__["default"])(name);
-            t1.setDescription(description);
-            t1.setPriority(priority);
-            t1.setDueDate(dueDate);
-            t1.setDateCreated(dateCreated);
-            p1.addItem(t1);
+            const todo = new _models_todo__WEBPACK_IMPORTED_MODULE_6__["default"](name, description, priority, new Date(dueDate), dateCreated);
+            projectObject.addItem(todo);
         });
 
         //add Project to allProjects
-        addProject(p1);
+        addProject(projectObject);
     });
 
 };
@@ -2799,7 +2934,7 @@ _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortDueDate', sortDueDate);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('sortPriority', sortPriority);
 _pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('selectTodoItem', selectTodoItem);
 
-_pubsub__WEBPACK_IMPORTED_MODULE_4__["default"].on('submitEditTodo', submitEditTodo);
+// events.on('submitEditTodo', submitEditTodo);
 
 
 
@@ -2827,12 +2962,15 @@ b1.addEventListener('click', () => saveData());
 
 
 const loadedProjects = localStorage.getItem('allProjects');
+console.log(loadedProjects, 'tttttttt');
 if (!loadedProjects){
+    //load default if nothing in Local Storage
     addProject((0,_Project__WEBPACK_IMPORTED_MODULE_2__["default"])('Default'));
     testAddTODOItems();
 }else{
     parseFromJSON(loadedProjects);
 }
+
 
 
 
@@ -2851,4 +2989,4 @@ if (!loadedProjects){
 
 /******/ })()
 ;
-//# sourceMappingURL=main.77e686f835ee69639f34.js.map
+//# sourceMappingURL=main.bd316e6b93d9f1841b75.js.map

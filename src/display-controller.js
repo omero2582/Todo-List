@@ -2,6 +2,8 @@ import Project from "./Project";
 import TodoItem from "./todo-item";
 import events from "./pubsub";
 import { formatDistanceToNow } from 'date-fns';
+import Todo from "./models/todo";
+import {closeModal, modal, openModal} from "./components/todoForm";
 
 const DisplayController = () => {
     //cache
@@ -30,36 +32,34 @@ const DisplayController = () => {
     //modal Todo template
     const template = document.querySelector('.modal-template');
 
-    //modal newTodo
-    const clone1 = template.content.cloneNode(true);
-    const modal = clone1.querySelector('.modal');
-    document.body.appendChild(modal);
-    const formNewTodo = modal.querySelector('.todo-form');
-    const btnCloseModal = modal.querySelector('.close-modal');
-    //inputs newTodo
-    const newTodoName = modal.querySelector('#todo-name');
-    const newTodoDescription = modal.querySelector('#todo-description');
-    const newTodoPriority = modal.querySelector('#todo-priority');
-    const newTodoDueDate = modal.querySelector('#todo-due-date');
+    // //modal newTodo
+    // const clone1 = template.content.cloneNode(true);
+    // const modal = clone1.querySelector('.modal');
+    // document.body.appendChild(modal);
+    // const formNewTodo = modal.querySelector('.todo-form');
+    // const btnCloseModal = modal.querySelector('.close-modal');
+    // //inputs newTodo
+    // const newTodoName = modal.querySelector('#todo-name');
+    // const newTodoDescription = modal.querySelector('#todo-description');
+    // const newTodoPriority = modal.querySelector('#todo-priority');
+    // const newTodoDueDate = modal.querySelector('#todo-due-date');
 
-    //modal editTodo
-    const cloneEdit = template.content.cloneNode(true);
-    const modalEditTodo = cloneEdit.querySelector('.modal');
-    document.body.appendChild(modalEditTodo);
-    const formEditTodo = modalEditTodo.querySelector('.todo-form');
-    const btnCloseEditModal = modalEditTodo.querySelector('.close-modal');
-    //inputs editTodo
-    const editTodoName = modalEditTodo.querySelector('#todo-name');
-    const editTodoDescription = modalEditTodo.querySelector('#todo-description');
-    const editTodoPriority = modalEditTodo.querySelector('#todo-priority');
-    const editTodoDueDate = modalEditTodo.querySelector('#todo-due-date');
+    // //modal editTodo
+    // const cloneEdit = template.content.cloneNode(true);
+    // const modalEditTodo = cloneEdit.querySelector('.modal');
+    // document.body.appendChild(modalEditTodo);
+    // const formEditTodo = modalEditTodo.querySelector('.todo-form');
+    // const btnCloseEditModal = modalEditTodo.querySelector('.close-modal');
+    // //inputs editTodo
+    // const editTodoName = modalEditTodo.querySelector('#todo-name');
+    // const editTodoDescription = modalEditTodo.querySelector('#todo-description');
+    // const editTodoPriority = modalEditTodo.querySelector('#todo-priority');
+    // const editTodoDueDate = modalEditTodo.querySelector('#todo-due-date');
 
 
     const checkTarget = (e) => {
         if (e.target === modal){
-            closeModal(modal);
-        }else if (e.target == modalEditTodo){
-            closeModal(modalEditTodo);
+            closeModal();
         }
     }
 
@@ -71,16 +71,17 @@ const DisplayController = () => {
         formNewProject.reset();
     };
     
-    const submitNewTodo = (e) => {
-        e.preventDefault();
-        let t1 = TodoItem(newTodoName.value);
-        t1.setDescription(newTodoDescription.value);
-        t1.setPriority(newTodoPriority.value);
-        t1.setDueDate(newTodoDueDate.value);
-        events.emit('addTodo', t1);
-        closeModal(modal);
-        formNewTodo.reset();
-    };
+    // const submitNewTodo = (e) => {
+    //     e.preventDefault();
+    //     //checks if date Input is valid date, then assigns it as new date object, or null 
+    //     let dueDate = isNaN(Date.parse(newTodoDueDate.value)) ? null:  new Date(newTodoDueDate.value);
+    //     const todo = new Todo(newTodoName.value, newTodoDescription.value, newTodoPriority.value, dueDate);
+
+    //     //adds the Todo to the currently selected project
+    //     events.emit('addTodo', todo);
+    //     closeModal(modal);
+    //     formNewTodo.reset();
+    // };
     
     const openNewProjectForm = () => {
         formNewProject.style.display = 'inline-block';
@@ -90,15 +91,15 @@ const DisplayController = () => {
     const closeNewProjectForm = () => {
         formNewProject.style.display = 'none';
     };
-    const openModal = (modal) => {
-        modal.style.display = 'block';
-        console.log(modal);
-        newTodoName.focus();
-    };
+    // const openModal = (modal) => {
+    //     modal.style.display = 'block';
+    //     console.log(modal);
+    //     newTodoName.focus();
+    // };
 
-    const closeModal = (modal) => {
-        modal.style.display = 'none';
-    };
+    // const closeModal = (modal) => {
+    //     modal.style.display = 'none';
+    // };
 
     const renderProjectsBar  = (projectsArray, selectedProject) => {
         console.log('render Projects Bar')
@@ -144,8 +145,9 @@ const DisplayController = () => {
         tableProjectTodos.appendChild(tableBody);
         content.appendChild(tableProjectTodos);
         content.appendChild(projectTodoOptions);
-        closeModal(modal);
-        formNewTodo.reset();
+        closeModal();
+        // formNewTodo.reset();
+        //figre ti out later
     };
 
     const getFormattedDate = (date) => {
@@ -153,10 +155,10 @@ const DisplayController = () => {
         return  formattedDate;
     };
 
+    //render table row for each todo
     const getTodoTableItemRow = (item) =>{
-        const {getName, getDescription, getDueDate, getPriority, getId} = item;
-         
-        const todoItemInfo = [getName(), getDescription(), getFormattedDate(getDueDate()) , getPriority()];     //getDueDate().toDateString()
+        const {name, description, priority, dueDate} = item;
+        const todoItemInfo = [name, description, priority, getFormattedDate(dueDate)];     //getDueDate().toDateString()
         const tableRow = document.createElement('tr');
         todoItemInfo.forEach(property => {
             const tableData = document.createElement('td');
@@ -214,17 +216,17 @@ const DisplayController = () => {
     window.addEventListener('click', checkTarget);
 
     //modal NewTodo
-    formNewTodo.addEventListener('submit', submitNewTodo);
-    newTodoText.addEventListener('click', () => openModal(modal));
-    btnCloseModal.addEventListener('click', () => closeModal(modal));
+    // formNewTodo.addEventListener('submit', submitTodo);
+    newTodoText.addEventListener('click', () => openModal());
+    // btnCloseModal.addEventListener('click', () => closeModal(modal));
 
     //modal EditTodo
-    btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
-    formEditTodo.addEventListener('submit', e => {
-        e.preventDefault();
-        submitEditTodo();
-        // events.emit('submitEditTodo');
-    });
+    // btnCloseEditModal.addEventListener('click', () => closeModal(modalEditTodo));
+    // formEditTodo.addEventListener('submit', e => {
+    //     e.preventDefault();
+    //     submitEditTodo();
+    //     // events.emit('submitEditTodo');
+    // });
 
     //table
     nameHeader.addEventListener('click', () => events.emit('sortName'));
@@ -233,7 +235,7 @@ const DisplayController = () => {
     priorityHeader.addEventListener('click', () => events.emit('sortPriority'));
 
 
-    return {renderProjectsBar, renderProjectTodos, renderNoSelection, openModal, renderEditTodoModal, submitEditTodo};
+    return {renderProjectsBar, renderProjectTodos, renderNoSelection, renderEditTodoModal, submitEditTodo};
 };
 
 export default DisplayController;

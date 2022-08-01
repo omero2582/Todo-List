@@ -4,11 +4,14 @@ import Project from './Project';
 import DisplayController from './display-controller';
 import events from './pubsub';
 import DateItem from './Date-item';
+import Todo from './models/todo';
+import {editModal} from './components/todoForm'
 //TODO think about ID setting for Projects when you load them from localStorage...
 // id counter will end up resetting to 0, and new Book IDs will CLASH
 // have to save the currentID counter somewhere in the JSON ?? 
 // either way, dont know if I should set the ID here, or inside Projects' prototype
 // Same problem will happen with our old Library project
+
 let allProjects = [];
 let selectedProject;
 let selectedTodoItem;
@@ -130,44 +133,42 @@ const sortPriority = () =>{
 };
 
 const selectTodoItem = (todoItem) =>{
-    // const todoItem = selectedProject.getTodoItems().find(item => item.getId() == id);
-    selectedTodoItem = todoItem;
-    d1.renderEditTodoModal(todoItem);
+    // selectedTodoItem = todoItem;
+    // d1.renderEditTodoModal(todoItem);
+    editModal(todoItem);
 };
 
-const submitEditTodo = ({name, description, priority, dueDate}) => {
+// const submitEditTodo = ({name, description, priority, dueDate}) => {
 
-    selectedTodoItem.setName(name);
-    selectedTodoItem.setDescription(description);
-    selectedTodoItem.setPriority(priority);
-    selectedTodoItem.setDueDate(dueDate);
-    d1.renderProjectTodos(selectedProject);
-    console.log(`${name} updated!`);
-    saveData();
-};
+//     selectedTodoItem.setName(name);
+//     selectedTodoItem.setDescription(description);
+//     selectedTodoItem.setPriority(priority);
+//     selectedTodoItem.setDueDate(dueDate);
 
-const parseFromJSON = (JSONarray) => {
+        //displayTable
+//     d1.renderProjectTodos(selectedProject);
+//     console.log(`${name} updated!`);
+//     saveData();
+// };
+
+const parseFromJSON = JSONarray => {
     //localStorage retrieve
     clearAllProjects();
     const allProjectsParsed = JSON.parse(JSONarray);
-    allProjectsParsed.forEach( (project) => {
+    allProjectsParsed.forEach( project => {
         const {name, dateCreated, todoItems} = project;
-        const p1 = Project(name);
-        p1.setDateCreated(dateCreated);
+        const projectObject = Project(name);
+        projectObject.setDateCreated(dateCreated);
 
         //loop through todoItems and re-create the real objects
         todoItems.forEach( item => {
             const {name, description, priority, dueDate, dateCreated} = item;
-            const t1 = TodoItem(name);
-            t1.setDescription(description);
-            t1.setPriority(priority);
-            t1.setDueDate(dueDate);
-            t1.setDateCreated(dateCreated);
-            p1.addItem(t1);
+            const todo = new Todo(name, description, priority, new Date(dueDate), dateCreated);
+            projectObject.addItem(todo);
         });
 
         //add Project to allProjects
-        addProject(p1);
+        addProject(projectObject);
     });
 
 };
@@ -185,7 +186,7 @@ events.on('sortDueDate', sortDueDate);
 events.on('sortPriority', sortPriority);
 events.on('selectTodoItem', selectTodoItem);
 
-events.on('submitEditTodo', submitEditTodo);
+// events.on('submitEditTodo', submitEditTodo);
 
 
 
@@ -213,12 +214,15 @@ b1.addEventListener('click', () => saveData());
 
 
 const loadedProjects = localStorage.getItem('allProjects');
+console.log(loadedProjects, 'tttttttt');
 if (!loadedProjects){
+    //load default if nothing in Local Storage
     addProject(Project('Default'));
     testAddTODOItems();
 }else{
     parseFromJSON(loadedProjects);
 }
+
 
 
 
